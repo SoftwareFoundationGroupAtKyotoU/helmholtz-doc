@@ -76,17 +76,16 @@ instructions (`LOOP`, `ITER`, etc.), respectively.
 #### Contract Annotations
 
 A contract annotation gives a specification of contract.  It is placed just before the code section
-and causes Helmholtz to check if the contract satisfies the given specification.
-
-A contract annotation has the form `ContractAnnot rtype_pre -> rtype_post & rtype_abpost vars`,
-where `vars` is optional.
+and causes Helmholtz to check if the contract satisfies the given specification.  A contract
+annotation has the form `ContractAnnot rtype_pre -> rtype_post & rtype_abpost vars`, where `vars` is
+optional.
 
 - `rtype_pre` describes a supposed state of an initial stack.  So it is a refinement stack type for
   a stack type `(pair parameter_ty storage_ty) : []`.  The stack pattern in `rtype_pre` is
   restricted to the form of `(p1, p2)` or `_` (simple variable pattern `x` is prohibit in other
   words) because of technical reason.  A typical `rtype_pre` is `{ _ | True }`, which means a
   contract can accept any parameter and storage value.  It is also reasonable to give an assumption
-  for a storage value, since the storage is controled by a contract, like `{ (_, addr) | match
+  for a storage value, since the storage is controlled by a contract, like `{ (_, addr) | match
   contract_opt addr with Some (Contract<string> _) -> True | None -> False }` which supposes the
   destination of an address stored in the storage must exist and of which parameter type is
   `string`.
@@ -98,86 +97,45 @@ where `vars` is optional.
   `Error v` for a `FAILWITH` exception and `Overflow` for the overflow exception.  A typical
   `rtype_abpost` is `{ _ | False }`, which means no exception happens since no value can satisfy the
   `False` condition.
+- Optional `vars` declares variables that can be used in annotations occurring in contract code
+  (except the body of `LAMBDA` instruction).  So those cannot occur in `rtype_*`.
 
-##### Scope of Variables
+##### Special treatment of the scope of pre-condition stack variables.
 
 Basically scope of the variables in the stack pattern in a refinement stack type is in its predicate
 expression.  The only exception is ones in `rtype_pre`.  Its scope also involves predicate
 expressions in `rtype_post`, `rtype_abpost`, and annotations occurring in contract code (except the
 body of `LAMBDA` instruction).
 
-The scope of the optional `vars` is in annotations occurring in contract code (except the body of
-`LAMBDA` instruction).  So those cannot occur in `rtype_*`.
-
 #### Lambda Annotations
 
 A lambda annotation is a similar annotation to contract annotations but for `LAMBDA` instruction.
-So it is placed just before the `LAMBDA` instruction and causes Helmholtz to check if a lambda
-pushed by the instruction satisfies the given specification.
-
-A lambda annotation has the form `LambdaAnnot rtype_pre -> rtype_post & rtype_abpost vars` and each
-component has similar meaning to ones of a contract annotation.
+So it must be placed just before the `LAMBDA` instruction and causes Helmholtz to check if a lambda
+pushed by the instruction satisfies the given specification.  A lambda annotation has the form
+`LambdaAnnot rtype_pre -> rtype_post & rtype_abpost vars` and each component has similar meaning to
+ones of a contract annotation.
 
 #### Loop Invariant
 
+A loop invariant annotation gives a loop invariant for loop-like instructions: `ITER`, `LOOP`, and
+`LOOP_LEFT` (`MAP` is not unsupported by Helmholtz yet); and so, it must be placed just before those
+instruction.  A loop invariant annotation has the form `LoopInv rtype`, where `rtype` gives a loop
+invariant.  A loop invariant is a desired condition for a stack just before a loop iteration.
+
 #### Assert
+
+An assert annotation lets Helmholtz check a stack condition at the given code point.  An assertion
+annotation has the form `Assert rtype`, where `rtype` gives a stack condition being verified.
 
 #### Assume
 
+An assume annotation adds a fact (hypothesis) about a stack condition at the given code point.  An
+assertion has the form `Assume rtype`, where `rtype` gives a fact for a stack condition.  A user can
+give any fact, and Helmholtz believes that the fact is correct, that means, Helmholtz never checks
+if the fact hold.  So, this annotation must be carefully used because, if you gives an incorrect
+fact, a verification result becomes nonsensical.
+
 #### Measure
-
-### Syntax
-
-    ANNOTATION ::=
-      | "Assert" RTYPE
-      | "LoopInv" RTYPE
-      | "Assume" RTYPE
-      | "LambdaAnnot" RTYPE "->" RTYPE "&" RTYPE [ "(" (VAR ":" SORT)+ ")" ]
-      | "ContractAnnot" RTYPE "->" RTYPE "&" RTYPE [ "(" (VAR ":" SORT)+ ")" ]
-      | "Measure" VAR ":" SORT "->" SORT "where" "[" "]" "=" EXP "|" VAR "::" VAR "=" EXP
-      | "Measure" VAR ":" SORT "->" SORT "where" "EmptySet" "=" EXP "|" "Add" VAR VAR "=" EXP
-      | "Measure" VAR ":" SORT "->" SORT "where" "EmptyMap" "=" EXP "|" "Bind" VAR VAR VAR "=" EXP
-    RTYPE ::= "{" STACK "|" EXP "}"
-    VAR ::= [a-z][a-z A-Z 0-9 _ ']*
-    STACK ::= PATTERN |  PATTERN ":" STACK
-    PATTERN ::=
-      | VAR
-      | CONSTRUCTOR ("<" SORT ">")? (PATTERN)*
-      | PATTERN "," PATTERN
-      | PATTERN "::" PATTERN
-      | "[" "]"
-      | "[" PATTERN (";" PATTERN)* "]"
-      | "_"
-      | "(" PATTERN ")"
-    EXP ::=
-      | VAR
-      | NUMBER
-      | STRING
-      | BYTES
-      | UOP EXP
-      | EXP BOP EXP
-      | CONSTRUCTOR (EXP)*
-      | FUNCTION (EXP)*
-      | EXP "." ACCESSER
-      | "if" EXP "then" EXP "else" EXP
-      | EXP "," EXP
-      | EXP ":" SORT
-      | "[" "]"
-      | "[" EXP (";" EXP)* "]"
-      | "match" EXP "with" PATTERNS ("|" PATTERNS)*
-      | "(" EXP ")"
-    PATTERNS ::= PATTERN "->" EXP
-    OP ::= "+" | "-" | "*" | "/" | "<" | ">" | "<=" | ">=" | "=" | "<>" | "&&" | "||" | "mod" | "::" | "^"
-    UOP ::= "-" | "!"
-    ACCESSER ::= "first" | "second"
-    SORT ::= "int" | "unit" | "nat" | "mutez" | "timestamp" |
-      | "bool" | "string" | "bytes" | "key" | "address" |
-      | "signature" | "key_hash" | "operation" |
-      | "pair" SORT SORT | "list" SORT |
-      | "contract" SORT | "option" SORT |
-      | "or" SORT SORT | "map" SORT SORT |
-      | "set" SORT SORT | "lambda" SORT SORT |
-      | "exception" | "(" SORT ")"
 
 ### Patterns and Expressions
 
@@ -209,6 +167,9 @@ component has similar meaning to ones of a contract annotation.
       | "match" EXP "with" PATTERNS ("|" PATTERNS)*
       | "(" EXP ")"
     PATTERNS ::= PATTERN "->" EXP
+    OP ::= "+" | "-" | "*" | "/" | "mod" | "<" | ">" | "<=" | ">=" | "=" | "<>" | "&&" | "||" | "::" | "^"
+    UOP ::= "-" | "!"
+    ACCESSER ::= "first" | "second"
 
 Patterns and expressions are similar to ones of a functional programming language (basically we
 follow OCaml).  However there are notable difference from a general programming language because the
@@ -216,8 +177,8 @@ expressions are designed for first-order logic:
 
 - Constructors and functions must be fully applied.
 - There is no facility to define new data types and functions.  (Measure annotation could be an
-  exception, but the ability is restricted.)  So, only built-in constructors and functions can be
-  used.
+  exception, but the ability is restricted.)  So, only built-in constructors and (measure) functions
+  can be used.
 
 #### Constructors
 
@@ -393,137 +354,4 @@ or a map that can be used in annotations.
 - It is not an error output by Helmholtz, but an error by indent-check by Michelson `tezos-client typecheck`. For the rules of indentation, see [here](https://tezos.gitlab.io/whitedoc/micheline.html).
 - Error `MenhirBasics.Error` is output
 - This is an syntax error output by Helmholtz. Please check the annotations you give.
-
-## Examples
-
-### Boomerang
-
-```ocaml
-# boomerang.tz
-parameter unit;
-storage unit;
-<< ContractAnnot
-   { (_, _) | True } ->
-   { (ops, _) | amount = 0 && ops = [] ||
-      amount <> 0  && (match contract_opt source with
-                         | Some c -> ops = [ TransferTokens Unit amount c ]
-                         | None -> False) } &
-   { _ | False } >>
-code
-  {
-    CDR;
-    NIL operation;
-    AMOUNT;
-    PUSH mutez 0;
-    IFCMPEQ
-      {
-      }
-      {
-        SOURCE;
-        CONTRACT unit;
-        ASSERT_SOME;
-        AMOUNT;
-        UNIT;
-        TRANSFER_TOKENS;
-        CONS;
-      };
-    PAIR;
-  }
-```
-
-The above code, which is the contents of `boomerang.tz` in the
-container, is a Michelson program that transfers money amount
-`balance` to an account `source`.  The program comes with an
-annotation surrounded by `<<` and `>>`.  This annotation, which is
-labeled by a constructor `ContractAnnot`, states the following two
-properties.
-
-+ The pair `(ops, _)`, which is in the stack at the end of the
-program, satisfies `ops = [TransferTokens Unit balance addr]`; this
-operation means that this contract will send money amount `balance`
-to `addr` with argument `Unit` after this contract finishes.
-+ No exceptions are raised from the instructions in this program; this
-is expressed by the part `... & { exc | False }`.  There is an
-`ASSERT_SOME` instruction in the program that may raise an exception
-when the stack top is `None`, but since, from the specification of
-Michelson, the account pointed to by `source` should be a
-human-operated account, the `CONTRACT unit` should always return
-`Some`, so no exception will be raised.
-
-If you verify this program, you will get `VERIFIED`.
-
-### Checksig
-
-```ocaml
-# checksig.tz
-parameter (pair signature string);
-storage (pair address key);
-<< ContractAnnot
-  { ((sign, data), (addr, pubkey)) |
-     match contract_opt addr with
-     Some (Contract<string> _) -> True | _ -> False } ->
-  { ([op], new_store) |
-     (addr, pubkey) = new_store &&
-     sig pubkey sign (pack data) &&
-     match contract_opt addr with
-     | Some c -> op = Transfer data 1 c
-     | None -> False }
-  & { _ | not (sig pubkey sign (pack data)) } >>
-code
-  {
-    DUP; DUP; DUP;
-    DIP { CAR; UNPAIR; DIP { PACK } }; CDDR;
-    CHECK_SIGNATURE; ASSERT;
-
-    UNPAIR; CDR; SWAP; CAR;
-    CONTRACT string; ASSERT_SOME; SWAP;
-    PUSH mutez 1; SWAP;
-    TRANSFER_TOKENS;
-
-    NIL operation; SWAP;
-    CONS; DIP { CDR };
-    PAIR;
-  }
-```
-
-This program checks the signature given by the parameter is valid and
-the contract that the address in storage points to has type `contract
-string`; this behavior is described in the post-condition part of
-`ContractAnnot`.  The exception part in `ContractAnnot` expresses that
-the program can raise two kinds of exceptions: `Error Unit` in
-`ASSERT` and `Error 0` in `FAILWITH`.
-
-### Sumseq
-
-```ocaml
-# sumseq.tz
-parameter (list int);
-storage int;
-<< Measure sumseq : (list int) -> int where Nil = 0 | Cons h t = (h + (sumseq t)) >>
-<< ContractAnnot { arg | True } ->
-  { ret | sumseq (first arg) = second ret } &
-  { exc | False } (l:list int) >>
-code
-  {
-    CAR;
-    << Assume { x | x = l } >>
-    DIP { PUSH int 0 };
-    << LoopInv { r:s | l = first arg && s + sumseq r = sumseq l } >>
-    ITER { ADD };
-    NIL operation;
-    PAIR;
-  }
-```
-
-This contract computes the sum of the integers in the list passed as a
-parameter.  The `ContractAnnot` annotation uses the function `sumseq`,
-which is defined in the earlier `Measure` annotation.  In the `code`
-section, the `Assume` annotation is used to specify that `l`, which is
-declared to be a ghost variable in the `ContractAnnot`, is the list
-passed as a parameter.  `LoopInv` gives the loop-invariant for
-`ITER`. `ITER { ADD }` is an instruction that adds the head of the
-list to the second `s` from the top of the stack. The loop-invariant
-condition `s + sumseq r = sumseq l` expresses that adding `s` to the
-sum of list `r` in process equals the sum of the list `l`.
-
 
