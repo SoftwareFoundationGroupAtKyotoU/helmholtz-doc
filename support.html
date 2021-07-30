@@ -1,0 +1,995 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Instruction support status &mdash; Helmholtz  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/modify.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Developer Document" href="develop.html" />
+    <link rel="prev" title="Helmholtz" href="helmholtz.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Helmholtz
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="helmholtz.html">Helmholtz</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instruction support status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-status">Detailed status</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Helmholtz</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Instruction support status</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/support.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="instruction-support-status">
+<h1>Instruction support status<a class="headerlink" href="#instruction-support-status" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP</span></code> instruction is not supported.</p></li>
+<li><p>Bitwise operation is not supported.</p></li>
+<li><p>Types and related instructions of <code class="docutils literal notranslate"><span class="pre">never</span></code>, <code class="docutils literal notranslate"><span class="pre">ticket</span></code>, <code class="docutils literal notranslate"><span class="pre">bls12_381_g1</span></code>, <code class="docutils literal notranslate"><span class="pre">bls12_381_g2</span></code>,
+<code class="docutils literal notranslate"><span class="pre">bls12_381_fr</span></code>, <code class="docutils literal notranslate"><span class="pre">sapling_transaction</span></code>, and <code class="docutils literal notranslate"><span class="pre">sapling_state</span></code> are not supported.</p></li>
+</ul>
+</div>
+<div class="section" id="detailed-status">
+<h2>Detailed status<a class="headerlink" href="#detailed-status" title="Permalink to this headline">¶</a></h2>
+<p>o: supported instruction</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Instruction</p></th>
+<th class="head"><p>typing</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>ABS</p></td>
+<td><p>int : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>ADD</p></td>
+<td><p>int : int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>int : nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>timestamp : int : ‘S -&gt; timestamp : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>int : timestamp : ‘S -&gt; timestamp : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>mutez : mutez : ‘S -&gt; mutez : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_g1 : bls12_381_g1 : ‘S -&gt; bls12_381_g1 : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_g2 : bls12_381_g2 : ‘S -&gt; bls12_381_g2 : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_fr : bls12_381_fr : ‘S -&gt; bls12_381_fr : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>ADDRESS</p></td>
+<td><p>contract _ :: ‘S -&gt; address : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>AMOUNT</p></td>
+<td><p>‘S -&gt; mutez : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>AND</p></td>
+<td><p>bool : bool : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>int : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>APPLY</p></td>
+<td><p>‘a : lambda (pair ‘a ‘b) ‘c : ‘C -&gt; lambda ‘b ‘c : ‘C</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>BALANCE</p></td>
+<td><p>‘S -&gt; mutez : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>BLAKE2B</p></td>
+<td><p>bytes : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>CAR</p></td>
+<td><p>pair ‘a _ : ‘S -&gt; ‘a : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>CAST ‘b</p></td>
+<td><p>‘a : ‘S -&gt; ‘b : ‘S <br /> iff ‘a = ‘b</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>CDR</p></td>
+<td><p>pair _ ‘b : ‘S -&gt; ‘b : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>CHAIN_ID</p></td>
+<td><p>‘S -&gt; chain_id : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>CHECK_SIGNATURE</p></td>
+<td><p>key : signature : bytes : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>COMPARE</p></td>
+<td><p>unit : unit : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>never : never : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>bool : bool : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>int : int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o<a class="footnote-reference brackets" href="#compare" id="id1">1</a></p></td>
+<td><p></p></td>
+<td><p>string : string : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>pair ‘a ‘b : pair ‘a ‘b : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>option ‘a : option ‘a : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>or ‘a ‘b : or ‘a ‘b : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>timestamp : timestamp : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>mutez : mutez : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o<a class="footnote-reference brackets" href="#compare" id="id2">1</a></p></td>
+<td><p></p></td>
+<td><p>chain_id : chain_id : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o<a class="footnote-reference brackets" href="#compare" id="id3">1</a></p></td>
+<td><p></p></td>
+<td><p>bytes : bytes : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o<a class="footnote-reference brackets" href="#compare" id="id4">1</a></p></td>
+<td><p></p></td>
+<td><p>key_hash : key_hash : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o<a class="footnote-reference brackets" href="#compare" id="id5">1</a></p></td>
+<td><p></p></td>
+<td><p>key : key : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o<a class="footnote-reference brackets" href="#compare" id="id6">1</a></p></td>
+<td><p></p></td>
+<td><p>signature : signature : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o<a class="footnote-reference brackets" href="#compare" id="id7">1</a></p></td>
+<td><p></p></td>
+<td><p>address : address : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>CONCAT</p></td>
+<td><p>string : string : ‘S -&gt; string : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>string list : ‘S -&gt; string : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>bytes : bytes : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>bytes list : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>CONS</p></td>
+<td><p>‘a : list ‘a : ‘S -&gt; list ‘a : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>CONTRACT ‘p</p></td>
+<td><p>address : ‘S -&gt; option (contract ‘p) : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o<a class="footnote-reference brackets" href="#create-contract" id="id8">2</a></p></td>
+<td><p>CREATE_CONTRACT <br /> { storage ‘g ; parameter ‘p ; code … }</p></td>
+<td><p>option key_hash : mutez : ‘g : ‘S -&gt; operation : address : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>DIG n</p></td>
+<td><p>‘a{1} : … : ‘a{n} : ‘b : ‘A -&gt; ‘b : ‘a{1} : … : ‘a{n} : ‘A</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>DIP code</p></td>
+<td><p>‘b : ‘A -&gt; ‘b : ‘C <br /> iff   code :: [ ‘A -&gt; ‘C ]</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>DIP n code</p></td>
+<td><p>‘a{1} : … : ‘a{n} : ‘A -&gt; ‘a{1} : … : ‘a{n} : ‘B <br /> iff   code :: [ ‘A -&gt; ‘B ]</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>DROP</p></td>
+<td><p>_ : ‘A -&gt; ‘A</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>DROP n</p></td>
+<td><p>‘a{1} : … : ‘a{n} : ‘A -&gt; ‘A</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>DUG n</p></td>
+<td><p>‘b : ‘a{1} : … : ‘a{n} : ‘A -&gt; ‘a{1} : … : ‘a{n} : ‘b : ‘A</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>DUP</p></td>
+<td><p>‘a : ‘A -&gt; ‘a : ‘a : ‘A</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>DUP n</p></td>
+<td><p>‘a{1} : … : ‘a{n} : ‘A -&gt; ‘a{n} : ‘a{1} : … : ‘a{n} : ‘A</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>EDIV</p></td>
+<td><p>int : int : ‘S -&gt; option (pair int nat) : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>int : nat : ‘S -&gt; option (pair int nat) : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : int : ‘S -&gt; option (pair int nat) : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; option (pair nat nat) : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>mutez : nat : ‘S -&gt; option (pair mutez mutez) : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>mutez : mutez : ‘S -&gt; option (pair nat mutez) : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>EMPTY_BIG_MAP ‘key ‘val</p></td>
+<td><p>‘S -&gt; big_map ‘key ‘val : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>EMPTY_MAP ‘key ‘val</p></td>
+<td><p>‘S -&gt; map ‘key ‘val : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>EMPTY_SET ‘elt</p></td>
+<td><p>‘S -&gt; set ‘elt : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>EQ</p></td>
+<td><p>int : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>EXEC</p></td>
+<td><p>‘a : lambda ‘a ‘b : ‘C -&gt; ‘b : ‘C</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>FAILWITH</p></td>
+<td><p>‘a : _ -&gt; _</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>GE</p></td>
+<td><p>int : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>GET</p></td>
+<td><p>‘key : map ‘key ‘val : ‘S -&gt; option ‘val : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>‘key : big_map ‘key ‘val : ‘S -&gt; option ‘val : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>GET 0</p></td>
+<td><p>‘a : ‘S -&gt; ‘a : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>GET (2k)</p></td>
+<td><p>pair ‘a{0} … ‘a{k-1} ‘a{k} : ‘S -&gt; ‘a{k} : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>GET (2k+1)</p></td>
+<td><p>pair ‘a{0} … ‘a{k} ‘a{k+1} : ‘S -&gt; ‘a{k} : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>GET_AND_UPDATE</p></td>
+<td><p>‘key : option ‘val : map ‘key ‘val : ‘S -&gt; option ‘val : map ‘key ‘val : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>‘key : option ‘val : big_map ‘key ‘val : ‘S -&gt; option ‘val : big_map ‘key ‘val : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>GT</p></td>
+<td><p>int : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>HASH_KEY</p></td>
+<td><p>key : ‘S -&gt; key_hash : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>IF bt bf</p></td>
+<td><p>bool : ‘A -&gt; ‘B <br /> iff   bt :: [ ‘A -&gt; ‘B ] <br /> bf :: [ ‘A -&gt; ‘B ]</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>IF_CONS bt bf</p></td>
+<td><p>list ‘a : ‘A -&gt; ‘B <br /> iff   bt :: [ ‘a : list ‘a : ‘A -&gt; ‘B] <br /> bf :: [ ‘A -&gt; ‘B]</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>IF_LEFT bt bf</p></td>
+<td><p>or ‘a ‘b : ‘A -&gt; ‘B <br /> iff   bt :: [ ‘a : ‘A -&gt; ‘B] <br /> bf :: [ ‘b : ‘A -&gt; ‘B]</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>IF_NONE bt bf</p></td>
+<td><p>option ‘a : ‘A -&gt; ‘B <br /> iff   bt :: [ ‘A -&gt; ‘B] <br /> bf :: [ ‘a : ‘A -&gt; ‘B]</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>IMPLICIT_ACCOUNT</p></td>
+<td><p>key_hash : ‘S -&gt; contract unit : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>INT</p></td>
+<td><p>nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_fr : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>ISNAT</p></td>
+<td><p>int : ‘S -&gt; option nat : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>ITER body</p></td>
+<td><p>(set ‘elt) : ‘A -&gt; ‘A <br /> iff body :: [ ‘elt : ‘A -&gt; ‘A ]</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>(map ‘elt ‘val) : ‘A -&gt; ‘A <br /> iff   body :: [ (pair ‘elt ‘val : ‘A) -&gt; ‘A ]</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>(list ‘elt) : ‘A -&gt; ‘A <br /> iff body :: [ ‘elt : ‘A -&gt; ‘A ]</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>JOIN_TICKETS</p></td>
+<td><p>(pair (ticket ‘a) (ticket ‘a)) : ‘S -&gt; option (ticket ‘a) : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>KECCAK</p></td>
+<td><p>bytes : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>LAMBDA ‘a ‘b code</p></td>
+<td><p>‘A -&gt; (lambda ‘a ‘b) : ‘A <br /> iff code :: [ ‘a -&gt; ‘b ]</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>LE</p></td>
+<td><p>int : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>LEFT ‘b</p></td>
+<td><p>‘a : ‘S -&gt; or ‘a ‘b : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>LEVEL</p></td>
+<td><p>‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>LOOP body</p></td>
+<td><p>bool : ‘A -&gt; ‘A <br /> iff   body :: [ ‘A -&gt; bool : ‘A ]</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>LOOP_LEFT body</p></td>
+<td><p>(or ‘a ‘b) : ‘A -&gt; ‘b : ‘A <br /> iff   body :: [ ‘a : ‘A -&gt; (or ‘a ‘b) : ‘A ]</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>LSL</p></td>
+<td><p>nat : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>LSR</p></td>
+<td><p>nat : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>LT</p></td>
+<td><p>int : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>MAP body</p></td>
+<td><p>(map ‘key ‘val) : ‘A -&gt; (map ‘key ‘b) : ‘A <br /> iff   body :: [ (pair ‘key ‘val) : ‘A -&gt; ‘b : ‘A ]</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>(list ‘elt) : ‘A -&gt; (list ‘b) : ‘A <br /> iff   body :: [ ‘elt : ‘A -&gt; ‘b : ‘A ]</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>MEM</p></td>
+<td><p>‘elt : set ‘elt : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>‘key : map ‘key ‘val : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>‘key : big_map ‘key ‘val : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>MUL</p></td>
+<td><p>int : int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>int : nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>mutez : nat : ‘S -&gt; mutez : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : mutez : ‘S -&gt; mutez : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_g1 : bls12_381_fr : ‘S -&gt; bls12_381_g1 : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_g2 : bls12_381_fr : ‘S -&gt; bls12_381_g2 : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_fr : bls12_381_fr : ‘S -&gt; bls12_381_fr : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>nat : bls12_381_fr : ‘S -&gt; bls12_381_fr : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>int : bls12_381_fr : ‘S -&gt; bls12_381_fr : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_fr : nat : ‘S -&gt; bls12_381_fr : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_fr : int : ‘S -&gt; bls12_381_fr : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>NEG</p></td>
+<td><p>int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_g1 : ‘S -&gt; bls12_381_g1 : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_g2 : ‘S -&gt; bls12_381_g2 : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>bls12_381_fr : ‘S -&gt; bls12_381_fr : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>NEQ</p></td>
+<td><p>int : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>NEVER</p></td>
+<td><p>never : ‘A -&gt; ‘B</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>NIL ‘a</p></td>
+<td><p>‘S -&gt; list ‘a : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>NONE ‘a</p></td>
+<td><p>‘S -&gt; option ‘a : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>NOT</p></td>
+<td><p>bool : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>NOW</p></td>
+<td><p>‘S -&gt; timestamp : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>OR</p></td>
+<td><p>bool : bool : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>PACK</p></td>
+<td><p>‘a : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>PAIR</p></td>
+<td><p>‘a : ‘b : ‘S -&gt; pair ‘a ‘b : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>PAIR n</p></td>
+<td><p>‘a{0} : … : ‘a{n-1} : ‘A -&gt; pair ‘a{0} …  ‘a{n-1} : ‘A</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>PAIRING_CHECK</p></td>
+<td><p>list (pair bls12_381_g1 bls12_381_g2) : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o<a class="footnote-reference brackets" href="#push" id="id9">3</a></p></td>
+<td><p>PUSH ‘a x</p></td>
+<td><p>‘A -&gt; ‘a : ‘A <br /> iff   x :: ‘a</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>READ_TICKET</p></td>
+<td><p>ticket ‘a : ‘S -&gt; pair address ‘a nat : ticket ‘a : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>RENAME</p></td>
+<td><p>‘S -&gt; ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>RIGHT ‘a</p></td>
+<td><p>‘b : ‘S -&gt; or ‘a ‘b : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>SAPLING_EMPTY_STATE ms</p></td>
+<td><p>‘S -&gt; sapling_state ms: ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>SAPLING_VERIFY_UPDATE</p></td>
+<td><p>sapling_transaction ms : sapling_state ms : ‘S -&gt; option (pair int (sapling_state ms)): ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>SELF</p></td>
+<td><p>‘S -&gt; contract ‘p : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>SELF_ADDRESS</p></td>
+<td><p>‘S -&gt; address : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>SENDER</p></td>
+<td><p>‘S -&gt; address : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>SET_DELEGATE</p></td>
+<td><p>option key_hash : ‘S -&gt; operation : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>SHA256</p></td>
+<td><p>bytes : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>SHA3</p></td>
+<td><p>bytes : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>SHA512</p></td>
+<td><p>bytes : ‘S -&gt; bytes : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>SIZE</p></td>
+<td><p>string : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>set ‘elt : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>map ‘key ‘val : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>list ‘elt : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>bytes : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>SLICE</p></td>
+<td><p>nat : nat : string : ‘S -&gt; option string : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : nat : bytes : ‘S -&gt; option bytes : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>SOME</p></td>
+<td><p>‘a : ‘S -&gt; option ‘a : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>SOURCE</p></td>
+<td><p>‘S -&gt; address : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>SPLIT_TICKET</p></td>
+<td><p>ticket ‘a : (pair nat nat) : ‘S -&gt; option (pair (ticket ‘a) (ticket ‘a)) : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>SUB</p></td>
+<td><p>int : int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>int : nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : int : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>timestamp : int : ‘S -&gt; timestamp : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>timestamp : timestamp : ‘S -&gt; int : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>mutez : mutez : ‘S -&gt; mutez : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>SWAP</p></td>
+<td><p>‘a : ‘b : ‘A -&gt; ‘b : ‘a : ‘A</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>TICKET</p></td>
+<td><p>‘a : nat : ‘S -&gt; ticket ‘a : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>TOTAL_VOTING_POWER</p></td>
+<td><p>‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>TRANSFER_TOKENS</p></td>
+<td><p>‘p : mutez : contract ‘p : ‘S -&gt; operation : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>UNIT</p></td>
+<td><p>‘A -&gt; unit : ‘A</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>UNPACK ‘a</p></td>
+<td><p>bytes : ‘S -&gt; option ‘a : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>UNPAIR</p></td>
+<td><p>pair ‘a ‘b : ‘S -&gt; ‘a : ‘b : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>UNPAIR n</p></td>
+<td><p>pair ‘a{0} … ‘a{n-1} : S -&gt; ‘a{0} : … : ‘a{n-1} : S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>UPDATE</p></td>
+<td><p>‘elt : bool : set ‘elt : ‘S -&gt; set ‘elt : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>‘key : option ‘val : map ‘key ‘val : ‘S -&gt; map ‘key ‘val : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p></p></td>
+<td><p>‘key : option ‘val : big_map ‘key ‘val : ‘S -&gt; big_map ‘key ‘val : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>UPDATE 0</p></td>
+<td><p>‘a : ‘b : ‘S -&gt; ‘a : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>UPDATE (2k)</p></td>
+<td><p>‘c : pair ‘a{0} … ‘a{k-1} ‘a{k} : ‘S -&gt; pair ‘a{0} … ‘a{k-1} ‘c : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>UPDATE (2k+1)</p></td>
+<td><p>‘c : pair ‘a{0} … ‘a{k} ‘a{k+1} : ‘S -&gt; pair ‘a{0} … ‘a{k-1} ‘c ‘a{k+1} : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p>o</p></td>
+<td><p>VOTING_POWER</p></td>
+<td><p>key_hash : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>XOR</p></td>
+<td><p>bool : bool : ‘S -&gt; bool : ‘S</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>nat : nat : ‘S -&gt; nat : ‘S</p></td>
+</tr>
+</tbody>
+</table>
+<p>Deprecated</p>
+<ul class="simple">
+<li><p>CREATE_ACCOUNT</p></li>
+<li><p>STEPS_TO_QUOTA</p></li>
+</ul>
+<hr class="footnotes docutils" />
+<dl class="footnote brackets">
+<dt class="label" id="compare"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>,<a href="#id3">3</a>,<a href="#id4">4</a>,<a href="#id5">5</a>,<a href="#id6">6</a>,<a href="#id7">7</a>)</span></dt>
+<dd><p>Only equality is concerned.</p>
+</dd>
+<dt class="label" id="create-contract"><span class="brackets"><a class="fn-backref" href="#id8">2</a></span></dt>
+<dd><p>Supported but not well worked because of tezos-client side’s bug.</p>
+</dd>
+<dt class="label" id="push"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">map</span></code>, and <code class="docutils literal notranslate"><span class="pre">lambda</span></code> are not supported.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="develop.html" class="btn btn-neutral float-right" title="Developer Document" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="helmholtz.html" class="btn btn-neutral float-left" title="Helmholtz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, ReFX project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

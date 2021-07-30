@@ -1,0 +1,435 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Developer Document &mdash; Helmholtz  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/modify.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="Instruction support status" href="support.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Helmholtz
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="helmholtz.html">Helmholtz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Instruction support status</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Document</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-verification-algorithm">Overview of Verification Algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#calculating-a-post-condition">Calculating a post-condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trying-to-fill-the-gap-between-calculated-condition-and-given-condition">Trying to fill the gap between calculated condition and given condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#showing-the-result">Showing the result</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tezos-specific-first-order-theory-in-z3">Tezos Specific First-order Theory in Z3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tezos-specific-functions-and-predicates">Tezos specific functions and predicates</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#measure-functions">Measure functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#overloaded-functions">Overloaded functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#tezos-specific-sorts">Tezos specific sorts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#implementation-technique">Implementation Technique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quantifiers-in-verification-conditions">Quantifiers in verification conditions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#heuristic-instantiation-of-universally-quantified-axioms">Heuristic instantiation of universally quantified axioms</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Helmholtz</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Developer Document</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/develop.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="developer-document">
+<h1>Developer Document<a class="headerlink" href="#developer-document" title="Permalink to this headline">¶</a></h1>
+<p>This document summarizes the implementation issues of Helmholtz.  The implementation follows
+the theoretical result~\cite{}, but several extensions and technique is required so that Helmholtz can successfully verify many programs and specifications.</p>
+<div class="section" id="overview-of-verification-algorithm">
+<h2>Overview of Verification Algorithm<a class="headerlink" href="#overview-of-verification-algorithm" title="Permalink to this headline">¶</a></h2>
+<p>Helmholtz verifies code following a <em>refinement</em> type system.  As Michelson does typecheck following
+the typing rules, we have extended the typing rules with refinements, first-order logic predicates.
+Following the refinement type system, given contract annotations, Helmholtz does:</p>
+<ul class="simple">
+<li><p>calculating the post-condition of program code under the given pre-condition;</p></li>
+<li><p>trying to fill the gap between the calculated condition and given post-condition; and</p></li>
+<li><p>showing the result whether the trial succeeds or not.</p></li>
+</ul>
+<p>Now let’s see each step in more detail.</p>
+<div class="section" id="calculating-a-post-condition">
+<h3>Calculating a post-condition<a class="headerlink" href="#calculating-a-post-condition" title="Permalink to this headline">¶</a></h3>
+<p>The following is one of the refinement typing rules.</p>
+<div class="math notranslate nohighlight">
+\[\Gamma \vdash \{ x_1:\mathtt{int} \rhd x_2:\mathtt{int} \rhd \Upsilon \mid \phi \} \; \mathtt{ADD}
+\; \{ x_3:\mathtt{int} \rhd \Upsilon \mid \exists x_1 x_2. \phi \wedge x_1 + x_2 = x_3 \}\]</div>
+<p>In the rule, <span class="math notranslate nohighlight">\(\Gamma\)</span> ranges over type bindings, <span class="math notranslate nohighlight">\(\Upsilon\)</span> ranges over stack bindings, and <span class="math notranslate nohighlight">\(\phi\)</span>
+ranges over first-order logic formulae.  The rule consists of a type binding and two refinement
+stack types.  The refinement stack type in the left side of <code class="docutils literal notranslate"><span class="pre">ADD</span></code> expresses the pre-condition of the
+instruction, and the right side one expresses the post-condition of the instruction.
+So the rule can be read as</p>
+<blockquote>
+<div><p>if <code class="docutils literal notranslate"><span class="pre">ADD</span></code> is executed under any stack condition, denoted by <span class="math notranslate nohighlight">\(\phi\)</span>, then the resulted stack
+satisfies the condition <span class="math notranslate nohighlight">\(\exists x_1 x_2. \phi \wedge x_1 + x_2 = x_3\)</span>,</p>
+</div></blockquote>
+<p>which expresses the precise behavior of <code class="docutils literal notranslate"><span class="pre">ADD</span></code> instruction.  The point of our type system is it is
+designed so that, given a pre-condition, we can syntactically calculate the post-condition of
+contract code.  For instance, given <span class="math notranslate nohighlight">\(\{x_1 \rhd x_2 \rhd [] \mid x_1 = 1 \wedge x_2 = 2\}\)</span>, which
+means the top of stack is 1 and the second from the top is 2, as a pre-condition of <code class="docutils literal notranslate"><span class="pre">ADD</span></code>, we can
+have the post-condition <span class="math notranslate nohighlight">\(\{x_3 \rhd [] \mid \exists x_1 x_2. x_1 = 1 \wedge x_2 = 2 \wedge x_1 +
+x_2 = x_3\}\)</span>, which means the top of stack is 3, following by the typing rule.  In this manner,
+Helmholtz calculate the post-condition of contract code from a given pre-condition.</p>
+</div>
+<div class="section" id="trying-to-fill-the-gap-between-calculated-condition-and-given-condition">
+<h3>Trying to fill the gap between calculated condition and given condition<a class="headerlink" href="#trying-to-fill-the-gap-between-calculated-condition-and-given-condition" title="Permalink to this headline">¶</a></h3>
+<p>There are three points occurring the gap between a calculated condition and a given condition.</p>
+<ul class="simple">
+<li><p>The post-condition of the whole contract code.  In most cases, a calculated post-condition is syntactically different from the desired condition given by ContractAnnot.  For example, in the
+<code class="docutils literal notranslate"><span class="pre">ADD</span></code> example above, given post-condition would be <span class="math notranslate nohighlight">\(\{ x_3 \rhd [] \mid x_3 = 3 \}\)</span>, a more
+straightforward refinement stack type.</p></li>
+<li><p>The pre- and post-condition of <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> body.  As you can see in the corresponding typing rule,
+those condition cannot be found out from the pre-condition of <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> instruction itself.  So we give those as LambdaAnnot.  For the same reason as the ContractAnnot case, a calculated post-condition will differ from the given post-condition.</p></li>
+<li><p>A loop invariant of loop-like instructions, which is also given as a LoopInv annotation.  In this
+case, the calculated post-condition of instruction just before a loop-like instruction and the
+calculated post-condition of the body of the loop-like instruction differ from the given ones.</p></li>
+</ul>
+<p>In the theoretical domain, the typing rule used to fill the gap is RT-Sub.  To apply the rule, Helmholtz
+checks if the subtyping relation holds.  By definition of the relation, for example, Helmholtz needs
+to know the validity of</p>
+<div class="math notranslate nohighlight">
+\[ \forall \Gamma x_3 . (\exists x_1 x_2. x_1 = 1 \wedge x_2 = 2 \wedge x_1 + x_2 = x_3) \Rightarrow
+(x_3 = 3) \]</div>
+<p>in the case mentioned in the first item of the last itemization.  To do so, Helmholtz uses the Z3
+SMT-solver to check satisfiability of the following formula, called <em>verification condition</em>.</p>
+<div class="math notranslate nohighlight">
+\[ \neg (\forall \Gamma x_3 . (\exists x_1 x_2. x_1 = 1 \wedge x_2 = 2 \wedge x_1 + x_2 = x_3)
+\Rightarrow (x_3 = 3)) \]</div>
+<p>The verification condition is the negation of the formula that we want to know its validity.  So, if
+Z3 reports the verification condition is satisfiable, which means there is a counter-example; the
+original formula is invalid.  Otherwise, if Z3 reports unsatisfiable, which means there is no
+counter-example, the original formula is valid.</p>
+</div>
+<div class="section" id="showing-the-result">
+<h3>Showing the result<a class="headerlink" href="#showing-the-result" title="Permalink to this headline">¶</a></h3>
+<p>This step is rather simple.  Helmholtz reads a response of Z3.  Then, if all verification conditions are unsatisfiable, Helmholtz reports VERIFIED message, or otherwise, UNVERIFIED message.</p>
+</div>
+</div>
+<div class="section" id="tezos-specific-first-order-theory-in-z3">
+<h2>Tezos Specific First-order Theory in Z3<a class="headerlink" href="#tezos-specific-first-order-theory-in-z3" title="Permalink to this headline">¶</a></h2>
+<p>The refinement type system uses a Michelson specialized first-order theory to describe the predicate
+formulae.  For example, the theory contains all Michelson types as sorts and various functions and
+predicates simulating Michelson instructions.  Z3 is implemented rather rich theory, but of course,
+our Tezos specific theory is out of the scope of the native theory in Z3.  Here we explain how our
+theory is implemented on Z3.  Note that the method explained here is a well-known method among logic
+textbooks.</p>
+<div class="section" id="tezos-specific-functions-and-predicates">
+<h3>Tezos specific functions and predicates<a class="headerlink" href="#tezos-specific-functions-and-predicates" title="Permalink to this headline">¶</a></h3>
+<p>To keep the type system simple, we enrich the logical functions and predicates and just use those in
+the post-condition of various instructions.  For example, the following is the typing rule for <code class="docutils literal notranslate"><span class="pre">SHA256</span></code>.</p>
+<div class="math notranslate nohighlight">
+\[ \Gamma \vdash \{ x:\mathtt{bytes} \rhd \Upsilon \mid \phi \} \; \mathtt{SHA256} \; \{
+y:\mathtt{bytes} \rhd \Upsilon \mid \exists x. \phi \wedge y = \text{sha256}(x) \}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{sha256}\)</span> is a logical function respecting <code class="docutils literal notranslate"><span class="pre">SHA256</span></code> behavior, that is, it (ideally)
+returns the sha256 hash of a given argument.  To represent the function in Z3, we declare the
+function symbol sha256 called an <em>uninterpreted function</em> and give axioms for the functions.
+Concretely, we give the following code for Z3 input.</p>
+<div class="highlight-scheme notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">declare-fun</span> <span class="nv">sha256</span> <span class="p">(</span><span class="nf">String</span><span class="p">)</span> <span class="nv">String</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">assert</span> <span class="p">(</span><span class="nf">forall</span> <span class="p">((</span><span class="nf">x</span> <span class="nv">String</span><span class="p">))</span> <span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nf">str</span><span class="o">.</span><span class="nv">len</span> <span class="p">(</span><span class="nf">sha256</span> <span class="nv">x</span><span class="p">))</span> <span class="mi">32</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>In the first line, the function symbol is declared and, in the second line, we give the axiom that says
+the length of the hash is 32.  Note that <code class="docutils literal notranslate"><span class="pre">bytes</span></code> sort is encoded as <code class="docutils literal notranslate"><span class="pre">String</span></code> of Z3 sorts, and <code class="docutils literal notranslate"><span class="pre">str.len</span></code> is a Z3 provided logic function that returns the length of a given string.</p>
+<p>Many readers have noticed that the axiom given is insufficient since it says nothing about how the hash
+is calculated.  Actually, most logical functions in Helmholtz which are encoded as uninterpreted functions are underspecified because precise axiomatization requires quite complicated formulae,
+which lead Z3 execution to diverge.  As a drawback, for instance, the formula <code class="docutils literal notranslate"><span class="pre">sha256</span> <span class="pre">0x0</span> <span class="pre">=</span> <span class="pre">0x6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d</span></code> cannot be validate by Helmholtz,
+despite the fact that the SHA-256 hash value of 0x0 is actually the value in the right side of the
+equality.  However, we observe that such a lightweight encoding well works because the fact that a
+function is applied to some terms itself is more important than what the result of the application
+is in many cases.  Moreover, we could manually supply such insufficient facts as the pre-condition
+of a contract if we really need it.</p>
+<div class="section" id="measure-functions">
+<h4>Measure functions<a class="headerlink" href="#measure-functions" title="Permalink to this headline">¶</a></h4>
+<p>Measure functions are also encoded as uninterpreted functions.  Thanks to the restricted form of
+measure annotations, Z3 input can be easily obtained.  For example, the following is the most
+general form of the measure annotation for lists.</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;</span> <span class="nc">Measure</span> <span class="n">f</span> <span class="o">:</span> <span class="kt">list</span> <span class="nc">T</span> <span class="o">-&gt;</span> <span class="nc">T&#39;</span> <span class="n">where</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">e1</span> <span class="o">|</span> <span class="n">h</span> <span class="o">::</span> <span class="n">t</span> <span class="o">=</span> <span class="n">e2</span> <span class="o">&gt;&gt;</span>
+</pre></div>
+</div>
+<p>It is easily imagined that the following Z3 input can be derived from the annotation.</p>
+<div class="highlight-scheme notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nf">declare-fun</span> <span class="nv">f</span> <span class="p">((</span><span class="nf">List</span> <span class="nv">T</span><span class="p">))</span> <span class="nv">T</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="nf">assert</span> <span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nf">f</span> <span class="p">[])</span> <span class="nv">e1</span><span class="p">))</span>
+<span class="p">(</span><span class="nf">assert</span> <span class="p">(</span><span class="nf">forall</span> <span class="p">((</span><span class="nf">h</span> <span class="nv">T</span><span class="p">)</span> <span class="p">(</span><span class="nf">t</span> <span class="p">(</span><span class="nf">List</span> <span class="nv">T</span><span class="p">)))</span> <span class="p">(</span><span class="nb">= </span><span class="p">(</span><span class="nf">f</span> <span class="p">(</span><span class="nb">cons </span><span class="nv">h</span> <span class="nv">t</span><span class="p">))</span> <span class="nv">e2</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>In the original work~\cite{}, measures are treated as a part of a type system.  Roughly speaking,
+the asserted axioms are systemically (instantiated and) embedded into typing rules.  We find that
+measures can be better handled at logic level than a type system because a type system does not need
+to concern measures, which now become usual logical functions, and logic can reason about properties
+of measures independently from a type system.  Note that the original idea is inherited as the axiom
+instantiation described in \secref{}.  So our treatment can be seen as an extension of the original
+work.</p>
+</div>
+<div class="section" id="overloaded-functions">
+<h4>Overloaded functions<a class="headerlink" href="#overloaded-functions" title="Permalink to this headline">¶</a></h4>
+<p>Corresponding to the fact that Michelson has overloaded instructions, there are overloaded logical
+functions like <code class="docutils literal notranslate"><span class="pre">pack</span></code>.  Z3 has no facility to declare an overloaded function, but an obvious idea to
+deal with such functions is to declare functions for every sort, e.g., <code class="docutils literal notranslate"><span class="pre">pack!int</span></code>, <code class="docutils literal notranslate"><span class="pre">pack!string</span></code>,
+etc.  One worry is that there are infinite functions for an overloaded function since there are
+infinite sorts because of compound data types, but declaring finite ones in Z3 input suffices since
+only finite sorts occur in each contract code.  (Of course, a set of declarations varies according
+to the contract code.)</p>
+</div>
+</div>
+<div class="section" id="tezos-specific-sorts">
+<h3>Tezos specific sorts<a class="headerlink" href="#tezos-specific-sorts" title="Permalink to this headline">¶</a></h3>
+<p>Although Z3 has a lot of sorts and the facility to declare algebraic datatypes, we still map some
+Helmholtz sorts into Z3 sorts, e.g., <code class="docutils literal notranslate"><span class="pre">nat</span></code> is mapped to <code class="docutils literal notranslate"><span class="pre">Int</span></code>.  The problem is that an original sort
+is usually a subset of a target sort, and so, naively replacing sorts loses the subset fact.  For
+example, <span class="math notranslate nohighlight">\(\forall x:\mathtt{nat}. x \ge 0\)</span> in Helmholtz should be valid, but the naively encoded
+formula <code class="docutils literal notranslate"><span class="pre">(forall</span> <span class="pre">((x</span> <span class="pre">Int))</span> <span class="pre">(&gt;=</span> <span class="pre">x</span> <span class="pre">0))</span></code> is invalid in Z3.</p>
+<p>To amend the problem, we adopt the method encoding a multi-sorted logic into a one-sorted
+logic~\cite{}.  Firstly, we define the <em>sort predicate</em> <span class="math notranslate nohighlight">\(P_T(x)\)</span> for each sort <span class="math notranslate nohighlight">\(T\)</span>, which
+characterizes the original range of the sort in a target sort.  For example, <span class="math notranslate nohighlight">\(P_\mathtt{nat}(x) ::=
+x \ge 0\)</span>.  Note that, because of compound data types, those definitions would be more complicated
+than the first thought, but honestly speaking, those can be defined in first-order predicate logic
+and, by similar reason to the overloaded functions, finite sort predicates suffices for each
+verification.</p>
+<p>Now we amend the lost condition by the sort predicates, that is, <span class="math notranslate nohighlight">\(\forall x:T. \phi\)</span> is encoded into
+<span class="math notranslate nohighlight">\(\forall x:[\![ T ]\!]. P_T(x) \Rightarrow \phi\)</span> and <span class="math notranslate nohighlight">\(\exists x:T. \phi\)</span> is encoded into <span class="math notranslate nohighlight">\(\exists
+x:[\![ T ]\!]. P_T(x) \wedge \phi\)</span>, where <span class="math notranslate nohighlight">\([\![ T ]\!]\)</span> denotes the target sort of <span class="math notranslate nohighlight">\(T\)</span> (e.g., <span class="math notranslate nohighlight">\([\![
+\mathtt{nat} ]\!] = \mathtt{Int}\)</span>).  Furthermore, we also amend axioms about co-domain of
+uninterpreted functions as <span class="math notranslate nohighlight">\(\forall \overline{x_i:T_i}. P_T(f(\bar{x_i}))\)</span> for the function <span class="math notranslate nohighlight">\(f\)</span> of
+<span class="math notranslate nohighlight">\(\overline{T_i} \rightarrow T\)</span> to prevent Z3 from finding an unintended model.</p>
+</div>
+</div>
+<div class="section" id="implementation-technique">
+<h2>Implementation Technique<a class="headerlink" href="#implementation-technique" title="Permalink to this headline">¶</a></h2>
+<p>The difficult part of the verification is the second step of the algorithm we have introduced.  It
+is undecidable in general since we need a validity check for an undecidable first-order theory.  Here,
+we introduce several not perfect but very effective techniques handling logical quantifiers in Helmholtz since those are a large factor making the step undecidable.</p>
+<div class="section" id="quantifiers-in-verification-conditions">
+<h3>Quantifiers in verification conditions<a class="headerlink" href="#quantifiers-in-verification-conditions" title="Permalink to this headline">¶</a></h3>
+<p>As we have seen, verification conditions have the following form, which will be undecidable because
+<span class="math notranslate nohighlight">\(\phi_\text{pre}\)</span> and <span class="math notranslate nohighlight">\(\phi_\text{post}\)</span> will involve more quantifiers.</p>
+<div class="math notranslate nohighlight">
+\[ \neg (\forall \Gamma \Upsilon. \phi_\text{pre} \Rightarrow \phi_\text{post}) \]</div>
+<p>To resolve the problem, the first observation is that <span class="math notranslate nohighlight">\(\phi_\text{post}\)</span> always comes from given
+annotations.  So, we design the annotation language so that it does not involve quantifies and make
+<span class="math notranslate nohighlight">\(\phi_\text{post}\)</span> quantifier-free, denoted by <span class="math notranslate nohighlight">\(\phi_\text{post}^\text{QF}\)</span>.  The second observation
+is that the calculated condition can be the form of <span class="math notranslate nohighlight">\(\exists \bar{x}. \phi^\text{QF}\)</span> (except the typing
+rules for <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> and <code class="docutils literal notranslate"><span class="pre">APPLY</span></code>).  So, now the verification condition can be equivalent to</p>
+<div class="math notranslate nohighlight">
+\[ \exists \Gamma \Upsilon \bar{x}. \phi_\text{pre}^\text{QF} \wedge \neg \phi_\text{post}^\text{QF}, \]</div>
+<p>which is much closer to a decidable fragment of the theory.</p>
+</div>
+<div class="section" id="heuristic-instantiation-of-universally-quantified-axioms">
+<h3>Heuristic instantiation of universally quantified axioms<a class="headerlink" href="#heuristic-instantiation-of-universally-quantified-axioms" title="Permalink to this headline">¶</a></h3>
+<p>Another source of quantifiers is the axioms of the theory.  As we have already seen, various axioms
+involve the universal quantifier.  Naively put such axiom in Z3 input, Z3 soon diverges.  Especially,
+verifying contract code expected UNVERIFIED tends to diverge because Z3 needs to find a
+counter-example for the given specification, which involves finding a model of uninterpreted
+functions.  Such a task is sometimes too hard if the functions are constrained by universally
+quantified axioms.</p>
+<p>To avoid difficulty, we give instantiated axioms for Z3 input instead of original universally
+quantified ones.  Of course, instantiated ones are less precise than the original ones.  For
+example, consider the axioms for a list measure.  We naively put the first axiom, which is the case
+for the nil list, because it is not quantified.  Regarding the second axiom, which is the case for a
+cons list, we do not give the axiom to Z3 input.  Instead, if we find a term of the form <code class="docutils literal notranslate"><span class="pre">(cons</span> <span class="pre">e_h</span> <span class="pre">e_t)</span></code> in formulae dealt with, we give the axiom obtained by replacing <code class="docutils literal notranslate"><span class="pre">h</span></code> and <code class="docutils literal notranslate"><span class="pre">t</span></code> with <code class="docutils literal notranslate"><span class="pre">e_h</span></code> and
+<code class="docutils literal notranslate"><span class="pre">e_t</span></code>, respectively, in <code class="docutils literal notranslate"><span class="pre">(=</span> <span class="pre">(f</span> <span class="pre">(cons</span> <span class="pre">h</span> <span class="pre">t))</span> <span class="pre">e2)</span></code>, which is one instance of the second axiom.  What
+terms are chosen for instantiation is determined by heuristics.  More instances would lead
+Helmholtz to verify more contracts but take more time.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="license.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="support.html" class="btn btn-neutral float-left" title="Instruction support status" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, ReFX project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

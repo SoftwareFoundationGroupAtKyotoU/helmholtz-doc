@@ -1,0 +1,761 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Helmholtz &mdash; Helmholtz  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/modify.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Instruction support status" href="support.html" />
+    <link rel="prev" title="Welcome to Helmholtz’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Helmholtz
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Helmholtz</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#specification-of-assertion-language">Specification of Assertion Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#refinement-stack-type">Refinement Stack Type</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#typechecking-for-refinement-stack-types">Typechecking for Refinement Stack Types</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#annotations">Annotations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#contract-annotations">Contract Annotations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lambda-annotations">Lambda Annotations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loop-invariant">Loop Invariant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assert">Assert</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assume">Assume</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#measure">Measure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#syntax">Syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#patterns-and-expressions">Patterns and Expressions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constructors">Constructors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#details">Details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#q-a">Q&amp;A</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#boomerang">Boomerang</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checksig">Checksig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sumseq">Sumseq</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Instruction support status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="develop.html">Developer Document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Helmholtz</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Helmholtz</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/helmholtz.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="tex2jax_ignore mathjax_ignore section" id="helmholtz">
+<h1>Helmholtz<a class="headerlink" href="#helmholtz" title="Permalink to this headline">¶</a></h1>
+<p>Helmholtz is a static verification tool for a stack-based programming language
+<a class="reference external" href="https://tezos.gitlab.io/whitedoc/michelson.html">Michelson</a>, a smart contract language used in
+<a class="reference external" href="https://tezos.gitlab.io/">Tezos</a> blockchain protocol.  It verifies that a Michelson program
+satisfies a user-written formal specification.</p>
+<p>Helmholtz accepts a <a class="reference external" href="https://tezos.gitlab.io/whitedoc/michelson.html">Michelson</a> program annotated
+with its formal specification and hints (e.g., loop invariant) used by Helmholtz.  An annotation is
+surrounded by <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>.</p>
+<p>Helmholtz works as follows.</p>
+<ul class="simple">
+<li><p>Helmholtz strips and preserves the annotations surrounded by <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> and typechecks the
+stripped code using <code class="docutils literal notranslate"><span class="pre">tezos-client</span> <span class="pre">typecheck</span></code>; the simple type checking is conducted in this step.</p></li>
+<li><p>After typechecking, it generates verification conditions using the preserved annotations.</p></li>
+<li><p>Then, Helmholtz discharges the conditions with <code class="docutils literal notranslate"><span class="pre">z3</span></code> and outputs <code class="docutils literal notranslate"><span class="pre">VERIFIED</span></code> or <code class="docutils literal notranslate"><span class="pre">UNVERIFIED</span></code>.</p></li>
+</ul>
+<div class="section" id="specification-of-assertion-language">
+<h2>Specification of Assertion Language<a class="headerlink" href="#specification-of-assertion-language" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="refinement-stack-type">
+<h3>Refinement Stack Type<a class="headerlink" href="#refinement-stack-type" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>RTYPE ::= &quot;{&quot; STACK &quot;|&quot; EXP &quot;}&quot;
+STACK ::= PATTERN |  PATTERN &quot;:&quot; STACK
+</pre></div>
+</div>
+<p>Refinement stack types are broadly used expressions to describe a state of stack values.  A
+refinement stack type consists of <code class="docutils literal notranslate"><span class="pre">STACK</span></code>, a stack pattern that binds variables to a matched stack
+values, and <code class="docutils literal notranslate"><span class="pre">EXP</span></code>, a predicate expression that describes a condition for the bound variables.</p>
+<p>For instance, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes any singleton stack because the stack pattern <code class="docutils literal notranslate"><span class="pre">x</span></code> matches a
+stack of exactly one length and the predicate expression <code class="docutils literal notranslate"><span class="pre">True</span></code> gives no condition on <code class="docutils literal notranslate"><span class="pre">x</span></code>.  In a
+similar manner, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">:</span> <span class="pre">y</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes a stack of two length, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">:</span> <span class="pre">y</span> <span class="pre">:</span> <span class="pre">z</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes a
+stack of three length, etc.  A predicate expression can be any Boolean expression.  So, for
+instance, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">|</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">}</span></code> denotes a singleton stack of positive integers.</p>
+<p>It sometimes happens that we are just interested in some top values of a stack.  In such a case, we
+can use <em>any pattern</em> <code class="docutils literal notranslate"><span class="pre">_</span></code> in the bottom position of a stack pattern, which denotes a stack of any
+length (including the nil stack).  So, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">_</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes any stack, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">:</span> <span class="pre">_</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes
+a stack of more than zero length, etc.  Note that <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">:</span> <span class="pre">_</span> <span class="pre">:</span> <span class="pre">y</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes a stack of exactly
+three length since any pattern is not placed in the bottom position and so it just matches any
+<em>value</em> in the middle of the stack.</p>
+<p>In general, we can use arbitrary patterns to match values in a stack.  For instance, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">(x,</span> <span class="pre">y)</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes a singleton stack of a pair.  Roughly speaking, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">p1</span> <span class="pre">:</span> <span class="pre">...</span> <span class="pre">:</span> <span class="pre">pn</span> <span class="pre">|</span> <span class="pre">e</span> <span class="pre">}</span></code> is
+interpreted as <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x1</span> <span class="pre">:</span> <span class="pre">...</span> <span class="pre">:</span> <span class="pre">xn</span> <span class="pre">|</span> <span class="pre">match</span> <span class="pre">x1,</span> <span class="pre">...,</span> <span class="pre">xn</span> <span class="pre">with</span> <span class="pre">p1,</span> <span class="pre">...,</span> <span class="pre">pn</span> <span class="pre">-&gt;</span> <span class="pre">e</span> <span class="pre">|</span> <span class="pre">_</span> <span class="pre">-&gt;</span> <span class="pre">False</span> <span class="pre">}</span></code> (in
+precise, there are a few differences, e.g., when <code class="docutils literal notranslate"><span class="pre">pn</span> <span class="pre">=</span> <span class="pre">_</span></code>, though).  So, <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">[x]</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code> denotes a
+singleton stack of a singleton list (it is equivalent to <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">y</span> <span class="pre">|</span> <span class="pre">match</span> <span class="pre">y</span> <span class="pre">with</span> <span class="pre">[x]</span> <span class="pre">-&gt;</span> <span class="pre">True</span> <span class="pre">|</span> <span class="pre">_</span> <span class="pre">-&gt;</span> <span class="pre">False</span> <span class="pre">}</span></code>.</p>
+<div class="section" id="typechecking-for-refinement-stack-types">
+<h4>Typechecking for Refinement Stack Types<a class="headerlink" href="#typechecking-for-refinement-stack-types" title="Permalink to this headline">¶</a></h4>
+<p>Given refinement stack types are typechecked to be a valid expression.  For example, when <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">x</span> <span class="pre">|</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">}</span></code> is placed in a code point in which a stack type is <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">:</span> <span class="pre">[]</span></code> (as you know, Michelson code is
+statically typed, so we know a stack type of each code point), a type of <code class="docutils literal notranslate"><span class="pre">x</span></code> is inferred as <code class="docutils literal notranslate"><span class="pre">int</span></code>
+and the refinement stack type is accepted as a valid expression.  Contrary, when it is placed in a
+code point expecting <code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">:</span> <span class="pre">[]</span></code>, Helmholtz reports a type error because a type of <code class="docutils literal notranslate"><span class="pre">x</span></code> is inferred
+as <code class="docutils literal notranslate"><span class="pre">bool</span></code> and the predicate expression is ill-typed since <code class="docutils literal notranslate"><span class="pre">0</span></code> is not a Boolean value.  Length
+mismatch is also reported as a type error like the Michelson type system does.</p>
+</div>
+</div>
+<div class="section" id="annotations">
+<h3>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ANNOTATION ::=
+  | &quot;Assert&quot; RTYPE
+  | &quot;LoopInv&quot; RTYPE
+  | &quot;Assume&quot; RTYPE
+  | &quot;LambdaAnnot&quot; RTYPE &quot;-&gt;&quot; RTYPE &quot;&amp;&quot; RTYPE [ &quot;(&quot; (VAR &quot;:&quot; SORT)+ &quot;)&quot; ]
+  | &quot;ContractAnnot&quot; RTYPE &quot;-&gt;&quot; RTYPE &quot;&amp;&quot; RTYPE [ &quot;(&quot; (VAR &quot;:&quot; SORT)+ &quot;)&quot; ]
+  | &quot;Measure&quot; VAR &quot;:&quot; SORT &quot;-&gt;&quot; SORT &quot;where&quot; &quot;[&quot; &quot;]&quot; &quot;=&quot; EXP &quot;|&quot; VAR &quot;::&quot; VAR &quot;=&quot; EXP
+  | &quot;Measure&quot; VAR &quot;:&quot; SORT &quot;-&gt;&quot; SORT &quot;where&quot; &quot;EmptySet&quot; &quot;=&quot; EXP &quot;|&quot; &quot;Add&quot; VAR VAR &quot;=&quot; EXP
+  | &quot;Measure&quot; VAR &quot;:&quot; SORT &quot;-&gt;&quot; SORT &quot;where&quot; &quot;EmptyMap&quot; &quot;=&quot; EXP &quot;|&quot; &quot;Bind&quot; VAR VAR VAR &quot;=&quot; EXP
+</pre></div>
+</div>
+<p>An annotation is a root object of annotations for Helmholtz.  It gives several operations, hints,
+etc. to Helmholtz.  There are six kinds of annotations in Helmholtz: <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code>, <code class="docutils literal notranslate"><span class="pre">LambdaAnnot</span></code>,
+<code class="docutils literal notranslate"><span class="pre">LoopInv</span></code>, <code class="docutils literal notranslate"><span class="pre">Assert</span></code>, <code class="docutils literal notranslate"><span class="pre">Assume</span></code>, and <code class="docutils literal notranslate"><span class="pre">Measure</span></code>.  In those, <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code> is mandatory for contract
+code, and <code class="docutils literal notranslate"><span class="pre">LambdaAnnot</span></code> and <code class="docutils literal notranslate"><span class="pre">LoopInv</span></code> is mandatory for the <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> instruction and loop
+instructions (<code class="docutils literal notranslate"><span class="pre">LOOP</span></code>, <code class="docutils literal notranslate"><span class="pre">ITER</span></code>, etc.), respectively.</p>
+<div class="section" id="contract-annotations">
+<h4>Contract Annotations<a class="headerlink" href="#contract-annotations" title="Permalink to this headline">¶</a></h4>
+<p>A contract annotation gives a specification of contract.  It is placed just before the code section
+and causes Helmholtz to check if the contract satisfies the given specification.</p>
+<p>A contract annotation has the form <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span> <span class="pre">rtype_pre</span> <span class="pre">-&gt;</span> <span class="pre">rtype_post</span> <span class="pre">&amp;</span> <span class="pre">rtype_abpost</span> <span class="pre">vars</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">vars</span></code> is optional.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rtype_pre</span></code> describes a supposed state of an initial stack.  So it is a refinement stack type for
+a stack type <code class="docutils literal notranslate"><span class="pre">(pair</span> <span class="pre">parameter_ty</span> <span class="pre">storage_ty)</span> <span class="pre">:</span> <span class="pre">[]</span></code>.  The stack pattern in <code class="docutils literal notranslate"><span class="pre">rtype_pre</span></code> is
+restricted to the form of <code class="docutils literal notranslate"><span class="pre">(p1,</span> <span class="pre">p2)</span></code> or <code class="docutils literal notranslate"><span class="pre">_</span></code> (simple variable pattern <code class="docutils literal notranslate"><span class="pre">x</span></code> is prohibit in other
+words) because of technical reason.  A typical <code class="docutils literal notranslate"><span class="pre">rtype_pre</span></code> is <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">_</span> <span class="pre">|</span> <span class="pre">True</span> <span class="pre">}</span></code>, which means a
+contract can accept any parameter and storage value.  It is also reasonable to give an assumption
+for a storage value, since the storage is controled by a contract, like <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">(_,</span> <span class="pre">addr)</span> <span class="pre">|</span> <span class="pre">match</span> <span class="pre">contract_opt</span> <span class="pre">addr</span> <span class="pre">with</span> <span class="pre">Some</span> <span class="pre">(Contract&lt;string&gt;</span> <span class="pre">_)</span> <span class="pre">-&gt;</span> <span class="pre">True</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">-&gt;</span> <span class="pre">False</span> <span class="pre">}</span></code> which supposes the
+destination of an address stored in the storage must exist and of which parameter type is
+<code class="docutils literal notranslate"><span class="pre">string</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtype_post</span></code> describes a desirable state of an final stack.  So it is a refinement stack type for
+a stack type <code class="docutils literal notranslate"><span class="pre">(pair</span> <span class="pre">(list</span> <span class="pre">operation)</span> <span class="pre">storage_ty)</span> <span class="pre">:</span> <span class="pre">[]</span></code>.  Helmholtz checks if this condition holds
+under the assumption described by <code class="docutils literal notranslate"><span class="pre">rtype_pre</span></code> and by analyzing the contract code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtype_abpost</span></code> describes a exceptional value condition.  It is a refinement stack type for the
+stack type <code class="docutils literal notranslate"><span class="pre">exception</span> <span class="pre">:</span> <span class="pre">[]</span></code>, where <code class="docutils literal notranslate"><span class="pre">exception</span></code> is a special data type consists of constructors
+<code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">v</span></code> for a <code class="docutils literal notranslate"><span class="pre">FAILWITH</span></code> exception and <code class="docutils literal notranslate"><span class="pre">Overflow</span></code> for the overflow exception.  A typical
+<code class="docutils literal notranslate"><span class="pre">rtype_abpost</span></code> is <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">_</span> <span class="pre">|</span> <span class="pre">False</span> <span class="pre">}</span></code>, which means no exception happens since no value can satisfy the
+<code class="docutils literal notranslate"><span class="pre">False</span></code> condition.</p></li>
+</ul>
+<div class="section" id="scope-of-variables">
+<h5>Scope of Variables<a class="headerlink" href="#scope-of-variables" title="Permalink to this headline">¶</a></h5>
+<p>Basically scope of the variables in the stack pattern in a refinement stack type is in its predicate
+expression.  The only exception is ones in <code class="docutils literal notranslate"><span class="pre">rtype_pre</span></code>.  Its scope also involves predicate
+expressions in <code class="docutils literal notranslate"><span class="pre">rtype_post</span></code>, <code class="docutils literal notranslate"><span class="pre">rtype_abpost</span></code>, and annotations occurring in contract code (except the
+body of <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> instruction).</p>
+<p>The scope of the optional <code class="docutils literal notranslate"><span class="pre">vars</span></code> is in annotations occurring in contract code (except the body of
+<code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> instruction).  So those cannot occur in <code class="docutils literal notranslate"><span class="pre">rtype_*</span></code>.</p>
+</div>
+</div>
+<div class="section" id="lambda-annotations">
+<h4>Lambda Annotations<a class="headerlink" href="#lambda-annotations" title="Permalink to this headline">¶</a></h4>
+<p>A lambda annotation is a similar annotation to contract annotations but for <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> instruction.
+So it is placed just before the <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> instruction and causes Helmholtz to check if a lambda
+pushed by the instruction satisfies the given specification.</p>
+<p>A lambda annotation has the form <code class="docutils literal notranslate"><span class="pre">LambdaAnnot</span> <span class="pre">rtype_pre</span> <span class="pre">-&gt;</span> <span class="pre">rtype_post</span> <span class="pre">&amp;</span> <span class="pre">rtype_abpost</span> <span class="pre">vars</span></code> and each
+component has similar meaning to ones of a contract annotation.</p>
+</div>
+<div class="section" id="loop-invariant">
+<h4>Loop Invariant<a class="headerlink" href="#loop-invariant" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="assert">
+<h4>Assert<a class="headerlink" href="#assert" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="assume">
+<h4>Assume<a class="headerlink" href="#assume" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="measure">
+<h4>Measure<a class="headerlink" href="#measure" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="syntax">
+<h3>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ANNOTATION ::=
+  | &quot;Assert&quot; RTYPE
+  | &quot;LoopInv&quot; RTYPE
+  | &quot;Assume&quot; RTYPE
+  | &quot;LambdaAnnot&quot; RTYPE &quot;-&gt;&quot; RTYPE &quot;&amp;&quot; RTYPE [ &quot;(&quot; (VAR &quot;:&quot; SORT)+ &quot;)&quot; ]
+  | &quot;ContractAnnot&quot; RTYPE &quot;-&gt;&quot; RTYPE &quot;&amp;&quot; RTYPE [ &quot;(&quot; (VAR &quot;:&quot; SORT)+ &quot;)&quot; ]
+  | &quot;Measure&quot; VAR &quot;:&quot; SORT &quot;-&gt;&quot; SORT &quot;where&quot; &quot;[&quot; &quot;]&quot; &quot;=&quot; EXP &quot;|&quot; VAR &quot;::&quot; VAR &quot;=&quot; EXP
+  | &quot;Measure&quot; VAR &quot;:&quot; SORT &quot;-&gt;&quot; SORT &quot;where&quot; &quot;EmptySet&quot; &quot;=&quot; EXP &quot;|&quot; &quot;Add&quot; VAR VAR &quot;=&quot; EXP
+  | &quot;Measure&quot; VAR &quot;:&quot; SORT &quot;-&gt;&quot; SORT &quot;where&quot; &quot;EmptyMap&quot; &quot;=&quot; EXP &quot;|&quot; &quot;Bind&quot; VAR VAR VAR &quot;=&quot; EXP
+RTYPE ::= &quot;{&quot; STACK &quot;|&quot; EXP &quot;}&quot;
+VAR ::= [a-z][a-z A-Z 0-9 _ &#39;]*
+STACK ::= PATTERN |  PATTERN &quot;:&quot; STACK
+PATTERN ::=
+  | VAR
+  | CONSTRUCTOR (&quot;&lt;&quot; SORT &quot;&gt;&quot;)? (PATTERN)*
+  | PATTERN &quot;,&quot; PATTERN
+  | PATTERN &quot;::&quot; PATTERN
+  | &quot;[&quot; &quot;]&quot;
+  | &quot;[&quot; PATTERN (&quot;;&quot; PATTERN)* &quot;]&quot;
+  | &quot;_&quot;
+  | &quot;(&quot; PATTERN &quot;)&quot;
+EXP ::=
+  | VAR
+  | NUMBER
+  | STRING
+  | BYTES
+  | UOP EXP
+  | EXP BOP EXP
+  | CONSTRUCTOR (EXP)*
+  | FUNCTION (EXP)*
+  | EXP &quot;.&quot; ACCESSER
+  | &quot;if&quot; EXP &quot;then&quot; EXP &quot;else&quot; EXP
+  | EXP &quot;,&quot; EXP
+  | EXP &quot;:&quot; SORT
+  | &quot;[&quot; &quot;]&quot;
+  | &quot;[&quot; EXP (&quot;;&quot; EXP)* &quot;]&quot;
+  | &quot;match&quot; EXP &quot;with&quot; PATTERNS (&quot;|&quot; PATTERNS)*
+  | &quot;(&quot; EXP &quot;)&quot;
+PATTERNS ::= PATTERN &quot;-&gt;&quot; EXP
+OP ::= &quot;+&quot; | &quot;-&quot; | &quot;*&quot; | &quot;/&quot; | &quot;&lt;&quot; | &quot;&gt;&quot; | &quot;&lt;=&quot; | &quot;&gt;=&quot; | &quot;=&quot; | &quot;&lt;&gt;&quot; | &quot;&amp;&amp;&quot; | &quot;||&quot; | &quot;mod&quot; | &quot;::&quot; | &quot;^&quot;
+UOP ::= &quot;-&quot; | &quot;!&quot;
+ACCESSER ::= &quot;first&quot; | &quot;second&quot;
+SORT ::= &quot;int&quot; | &quot;unit&quot; | &quot;nat&quot; | &quot;mutez&quot; | &quot;timestamp&quot; |
+  | &quot;bool&quot; | &quot;string&quot; | &quot;bytes&quot; | &quot;key&quot; | &quot;address&quot; |
+  | &quot;signature&quot; | &quot;key_hash&quot; | &quot;operation&quot; |
+  | &quot;pair&quot; SORT SORT | &quot;list&quot; SORT |
+  | &quot;contract&quot; SORT | &quot;option&quot; SORT |
+  | &quot;or&quot; SORT SORT | &quot;map&quot; SORT SORT |
+  | &quot;set&quot; SORT SORT | &quot;lambda&quot; SORT SORT |
+  | &quot;exception&quot; | &quot;(&quot; SORT &quot;)&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="patterns-and-expressions">
+<h3>Patterns and Expressions<a class="headerlink" href="#patterns-and-expressions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VAR ::= [a-z][a-z A-Z 0-9 _ &#39;]*
+PATTERN ::=
+  | VAR
+  | CONSTRUCTOR (&quot;&lt;&quot; SORT &quot;&gt;&quot;)? (PATTERN)*
+  | PATTERN &quot;,&quot; PATTERN
+  | PATTERN &quot;::&quot; PATTERN
+  | &quot;[&quot; &quot;]&quot;
+  | &quot;[&quot; PATTERN (&quot;;&quot; PATTERN)* &quot;]&quot;
+  | &quot;_&quot;
+  | &quot;(&quot; PATTERN &quot;)&quot;
+EXP ::=
+  | VAR
+  | NUMBER
+  | STRING
+  | BYTES
+  | UOP EXP
+  | EXP BOP EXP
+  | CONSTRUCTOR (EXP)*
+  | FUNCTION (EXP)*
+  | EXP &quot;.&quot; ACCESSER
+  | &quot;if&quot; EXP &quot;then&quot; EXP &quot;else&quot; EXP
+  | EXP &quot;,&quot; EXP
+  | EXP &quot;:&quot; SORT
+  | &quot;[&quot; &quot;]&quot;
+  | &quot;[&quot; EXP (&quot;;&quot; EXP)* &quot;]&quot;
+  | &quot;match&quot; EXP &quot;with&quot; PATTERNS (&quot;|&quot; PATTERNS)*
+  | &quot;(&quot; EXP &quot;)&quot;
+PATTERNS ::= PATTERN &quot;-&gt;&quot; EXP
+</pre></div>
+</div>
+<p>Patterns and expressions are similar to ones of a functional programming language (basically we
+follow OCaml).  However there are notable difference from a general programming language because the
+expressions are designed for first-order logic:</p>
+<ul class="simple">
+<li><p>Constructors and functions must be fully applied.</p></li>
+<li><p>There is no facility to define new data types and functions.  (Measure annotation could be an
+exception, but the ability is restricted.)  So, only built-in constructors and functions can be
+used.</p></li>
+</ul>
+<div class="section" id="constructors">
+<h4>Constructors<a class="headerlink" href="#constructors" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> : <code class="docutils literal notranslate"><span class="pre">bool</span></code> True value of Boolean type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> : <code class="docutils literal notranslate"><span class="pre">bool</span></code> False value of Boolean type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Unit</span></code> : <code class="docutils literal notranslate"><span class="pre">unit</span></code> The unique value of the unit type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Nil</span></code> : <code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">'a</span></code> The empty list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cons</span></code> : <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">list</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">list</span> <span class="pre">'a</span></code> Prepend an element to a list.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pair</span></code> : <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">pair</span> <span class="pre">'a</span> <span class="pre">'b</span></code> Make the pair of two elements.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code> : <code class="docutils literal notranslate"><span class="pre">option</span> <span class="pre">'a</span></code> Absent value of the option type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Some</span></code> : <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">option</span> <span class="pre">'a</span></code> Present value of the option type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Left</span></code> : <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">or</span> <span class="pre">'a</span> <span class="pre">'b</span></code> Left alternative of the or type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Right</span></code> : <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">or</span> <span class="pre">'b</span> <span class="pre">'a</span></code> Right alternative of the or type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Contract</span></code> : <code class="docutils literal notranslate"><span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">contract</span> <span class="pre">'a</span></code> A value of the contract type.  This constructor can be used
+only in a pattern, that is, used for deconstructing a contract object.  Use <code class="docutils literal notranslate"><span class="pre">contract_opt</span></code> for
+construction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SetDelegate</span></code> : <code class="docutils literal notranslate"><span class="pre">option</span> <span class="pre">key</span> <span class="pre">-&gt;</span> <span class="pre">operation</span></code> Delegate operation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TransferTokens</span></code> : <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">mutez</span> <span class="pre">-&gt;</span> <span class="pre">contract</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">operation</span></code> Transaction operation.  There is the
+short alias <code class="docutils literal notranslate"><span class="pre">Transfer</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CreateContract</span></code> : <code class="docutils literal notranslate"><span class="pre">option</span> <span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">mutez</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">operation</span></code> Contract origination
+operation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Error</span></code> : <code class="docutils literal notranslate"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">exception</span></code> Represents an exception raised by <code class="docutils literal notranslate"><span class="pre">FAILWITH</span></code> instruction.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Overflow</span></code> : <code class="docutils literal notranslate"><span class="pre">exception</span></code> Represents an overflow exception.</p></li>
+</ul>
+<div class="section" id="special-form-in-a-pattern">
+<h5>Special form in a pattern<a class="headerlink" href="#special-form-in-a-pattern" title="Permalink to this headline">¶</a></h5>
+<p>In a pattern, <code class="docutils literal notranslate"><span class="pre">Contract</span></code>, <code class="docutils literal notranslate"><span class="pre">TransferTokens</span></code>, <code class="docutils literal notranslate"><span class="pre">CreateContract</span></code>, and <code class="docutils literal notranslate"><span class="pre">Error</span></code> can be optionally followed
+by a type parameter of the form <code class="docutils literal notranslate"><span class="pre">&lt;ty&gt;</span></code> to give the specific type <code class="docutils literal notranslate"><span class="pre">ty</span></code> for those unique type
+variable.  For instance, the pattern <code class="docutils literal notranslate"><span class="pre">Contract</span> <span class="pre">&lt;nat&gt;</span> <span class="pre">x</span></code> is matched for a value of the type <code class="docutils literal notranslate"><span class="pre">contract</span> <span class="pre">nat</span></code>.</p>
+<p>Extra attention would be required for <code class="docutils literal notranslate"><span class="pre">TransferTokens</span></code>, <code class="docutils literal notranslate"><span class="pre">CreateContract</span></code>, and <code class="docutils literal notranslate"><span class="pre">Error</span></code> in a pattern.
+That is because, for example, a value of the type <code class="docutils literal notranslate"><span class="pre">exception</span></code> can be <code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">&lt;ty&gt;</span> <span class="pre">v</span></code> for any <code class="docutils literal notranslate"><span class="pre">ty</span></code>
+(and <code class="docutils literal notranslate"><span class="pre">v</span></code> of <code class="docutils literal notranslate"><span class="pre">ty</span></code>).  It implies the only way to make match expression for <code class="docutils literal notranslate"><span class="pre">exception</span></code> values be
+exhaustive is to include <em>any pattern</em> (default) case.  (Currently we have no facility to match <em>any
+type parameter</em>.)</p>
+</div>
+</div>
+<div class="section" id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Function</span></code> is one of the builtin functions and user defined measures.  The following is a list of
+the builtin functions and those descriptions.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">:</span> <span class="pre">bool</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>: <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">b</span></code> negates the Boolean value <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_str_opt</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">nat</span> <span class="pre">-&gt;</span> <span class="pre">option</span> <span class="pre">string</span></code>: <code class="docutils literal notranslate"><span class="pre">get_str_opt</span> <span class="pre">s</span> <span class="pre">i</span></code> returns <code class="docutils literal notranslate"><span class="pre">i</span></code>-th character of <code class="docutils literal notranslate"><span class="pre">s</span></code>
+as the one-length string.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sub_str_opt</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">nat</span> <span class="pre">-&gt;</span> <span class="pre">nat</span> <span class="pre">-&gt;</span> <span class="pre">option</span> <span class="pre">string</span></code>: <code class="docutils literal notranslate"><span class="pre">sub_str_opt</span> <span class="pre">s</span> <span class="pre">i</span> <span class="pre">l</span></code> returns the substring of
+<code class="docutils literal notranslate"><span class="pre">s</span></code> from <code class="docutils literal notranslate"><span class="pre">i</span></code>-th with the length of <code class="docutils literal notranslate"><span class="pre">l</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_str</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">nat</span></code>: <code class="docutils literal notranslate"><span class="pre">len_str</span> <span class="pre">s</span></code> returns the length of the string <code class="docutils literal notranslate"><span class="pre">s</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat_str</span> <span class="pre">:</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">string</span> <span class="pre">-&gt;</span> <span class="pre">string</span></code>: <code class="docutils literal notranslate"><span class="pre">concat_str</span> <span class="pre">s1</span> <span class="pre">s2</span></code> concatenates the two strings <code class="docutils literal notranslate"><span class="pre">s1</span></code>
+and <code class="docutils literal notranslate"><span class="pre">s2</span></code>.  This is equivalent to <code class="docutils literal notranslate"><span class="pre">s1</span> <span class="pre">^</span> <span class="pre">s2</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_bytes_opt</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sub_bytes_opt</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">int</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">len_bytes</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">int</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">concat_bytes</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">first</span> <span class="pre">:</span> <span class="pre">pair</span> <span class="pre">'a</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">'a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">second</span> <span class="pre">:</span> <span class="pre">pair</span> <span class="pre">'a</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pack</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code>: A value with this constructor corresponds to a value created by the
+instruction <code class="docutils literal notranslate"><span class="pre">PACK</span></code> in Michelson.  It is expressed by a constructor because it needs type
+information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unpack_opt</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">option</span> <span class="pre">'a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">find_opt</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">map</span> <span class="pre">'a</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">option</span> <span class="pre">'b</span></code>: <code class="docutils literal notranslate"><span class="pre">find_opt</span> <span class="pre">k</span> <span class="pre">m</span></code> looks for an entry associated with the
+key <code class="docutils literal notranslate"><span class="pre">k</span></code> from the map <code class="docutils literal notranslate"><span class="pre">m</span></code>.  It returns <code class="docutils literal notranslate"><span class="pre">Some</span> <span class="pre">v</span></code> if <code class="docutils literal notranslate"><span class="pre">v</span></code> associated with <code class="docutils literal notranslate"><span class="pre">k</span></code> in <code class="docutils literal notranslate"><span class="pre">m</span></code>, or otherwise, it
+returns <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">option</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">map</span> <span class="pre">'a</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">map</span> <span class="pre">'a</span> <span class="pre">'b</span></code>: <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">k</span> <span class="pre">(Some</span> <span class="pre">v)</span> <span class="pre">m</span></code> updates the value
+associated with <code class="docutils literal notranslate"><span class="pre">k</span></code> in <code class="docutils literal notranslate"><span class="pre">m</span></code> to <code class="docutils literal notranslate"><span class="pre">v</span></code>; <code class="docutils literal notranslate"><span class="pre">update</span> <span class="pre">k</span> <span class="pre">None</span> <span class="pre">m</span></code> deletes the value associated with <code class="docutils literal notranslate"><span class="pre">k</span></code> from <code class="docutils literal notranslate"><span class="pre">m</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">empty_map</span> <span class="pre">:</span> <span class="pre">map</span> <span class="pre">'a</span> <span class="pre">'b</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mem</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">set</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">set</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">set</span> <span class="pre">'a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove</span> <span class="pre">:</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">set</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">set</span> <span class="pre">'a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">empty_set</span> <span class="pre">:</span> <span class="pre">set</span> <span class="pre">'a</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">:</span> <span class="pre">address</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">SOURCE</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sender</span> <span class="pre">:</span> <span class="pre">address</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">SENDER</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self</span> <span class="pre">:</span> <span class="pre">contract</span> <span class="pre">parameter_ty</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">SELF</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self_addr</span> <span class="pre">:</span> <span class="pre">address</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">now</span> <span class="pre">:</span> <span class="pre">timestamp</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">NOW</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">balance</span> <span class="pre">:</span> <span class="pre">mutez</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">BALANCE</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">amount</span> <span class="pre">:</span> <span class="pre">mutez</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">AMOUNT</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chain_id</span> <span class="pre">:</span> <span class="pre">chain_id</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span> <span class="pre">:</span> <span class="pre">nat</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">total_voting_power</span> <span class="pre">:</span> <span class="pre">nat</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">contract_opt</span> <span class="pre">:</span> <span class="pre">address</span> <span class="pre">-&gt;</span> <span class="pre">option</span> <span class="pre">(contract</span> <span class="pre">'a)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">implicit_account</span> <span class="pre">:</span> <span class="pre">key_hash</span> <span class="pre">-&gt;</span> <span class="pre">contract</span> <span class="pre">unit</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">call</span> <span class="pre">:</span> <span class="pre">fun</span> <span class="pre">'a</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>: <code class="docutils literal notranslate"><span class="pre">call</span> <span class="pre">f</span> <span class="pre">a</span> <span class="pre">b</span></code>, where <code class="docutils literal notranslate"><span class="pre">f</span></code> returns <code class="docutils literal notranslate"><span class="pre">true</span></code> if the application
+of function <code class="docutils literal notranslate"><span class="pre">f</span></code> created by <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> to argument <code class="docutils literal notranslate"><span class="pre">a</span></code> terminates and evaluates to <code class="docutils literal notranslate"><span class="pre">b</span></code>; <code class="docutils literal notranslate"><span class="pre">false</span></code>
+otherwise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hash</span> <span class="pre">:</span> <span class="pre">key</span> <span class="pre">-&gt;</span> <span class="pre">key_hash</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">HASH</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">blake2b</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">BLAKE2B</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">keccak</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sha256</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">SHA256</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sha512</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">SHA512</span></code> in Michelson.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sha3</span> <span class="pre">:</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">:</span> <span class="pre">key</span> <span class="pre">-&gt;</span> <span class="pre">signature</span> <span class="pre">-&gt;</span> <span class="pre">bytes</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code>: Corresponding to <code class="docutils literal notranslate"><span class="pre">CHECK_SIGNATURE</span></code> in Michelson.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Annotations<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>In the following explanations of annotations, <code class="docutils literal notranslate"><span class="pre">rtype</span></code> represents a
+refinement type <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">stack</span> <span class="pre">|</span> <span class="pre">exp</span> <span class="pre">}</span></code> a pattern that maches a stack; <code class="docutils literal notranslate"><span class="pre">exp</span></code>
+is an expression of type <code class="docutils literal notranslate"><span class="pre">bool</span></code>.  It represents a <code class="docutils literal notranslate"><span class="pre">stack</span></code> in which
+<code class="docutils literal notranslate"><span class="pre">exp</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>There are 6 types of annotations below.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ContractAnnot</span> <span class="pre">rtype1</span> <span class="pre">-&gt;</span> <span class="pre">rtype2</span> <span class="pre">&amp;</span> <span class="pre">rtype3</span> <span class="pre">vars</span></code></p></li>
+<li><p>This annotation gives the specification of a contract.  If this contract is executed with an initial stack that satisfies the pre-condition <code class="docutils literal notranslate"><span class="pre">rtype1</span></code>, and if it finishes its execution without exception, then the resulting stack satisfies the post-condition <code class="docutils literal notranslate"><span class="pre">rtype2</span></code>; if an exception is raised, then the exception value satisfies <code class="docutils literal notranslate"><span class="pre">rtype3</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtype1</span></code> is a pre-condition for the stack (=<code class="docutils literal notranslate"><span class="pre">[pair</span> <span class="pre">parameter_ty</span> <span class="pre">storage_ty]</span></code>) when the program starts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtype2</span></code> is a post-condition for the stack (=<code class="docutils literal notranslate"><span class="pre">[pair</span> <span class="pre">(list</span> <span class="pre">operation)</span> <span class="pre">storage_ty]</span></code>) when the program ends.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rtype3</span></code> is a refinement type for the value the exception the program may throw has.</p></li>
+<li><p>It is possible to declare ghost variables in <code class="docutils literal notranslate"><span class="pre">vars</span></code> that can be used in annotation inside the program.</p></li>
+<li><p>The ghost variables can be used in the annotations in <code class="docutils literal notranslate"><span class="pre">code</span></code>
+section.  They cannot be used in <code class="docutils literal notranslate"><span class="pre">rtype1</span></code>, <code class="docutils literal notranslate"><span class="pre">rtype2</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">rtype3</span></code>.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code> annotation must be placed just before a <code class="docutils literal notranslate"><span class="pre">code</span></code> section.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LambdaAnnot</span> <span class="pre">rtype1</span> <span class="pre">-&gt;</span> <span class="pre">rtype2</span> <span class="pre">&amp;</span> <span class="pre">rtype3</span> <span class="pre">tvars</span></code></p></li>
+<li><p>This annotation gives the specification of a function that is
+created by an instruction <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code>.  A <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code> instruction
+associated with an annotation <code class="docutils literal notranslate"><span class="pre">LambdaAnnot</span> <span class="pre">rtype1</span> <span class="pre">-&gt;</span> <span class="pre">rtype2</span> <span class="pre">&amp;</span> <span class="pre">rtype3</span> <span class="pre">tvars</span></code> should behave as if it is a contract annotated with
+<code class="docutils literal notranslate"><span class="pre">ContractAnnot</span> <span class="pre">rtype1</span> <span class="pre">-&gt;</span> <span class="pre">rtype2</span> <span class="pre">&amp;</span> <span class="pre">rtype3</span></code>.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">LambdaAnnot</span></code> annotation must be placed just before <code class="docutils literal notranslate"><span class="pre">LAMBDA</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assert</span> <span class="pre">rtype</span></code></p></li>
+<li><p>It asserts that the stack at the program point where this
+annotation is placed satisfies <code class="docutils literal notranslate"><span class="pre">rtype</span></code>.</p></li>
+<li><p>An assertion is checked by Helmholtz; if it is not verified, then
+the result of Helmholtz will be <code class="docutils literal notranslate"><span class="pre">UNVERIFIED</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assume</span> <span class="pre">rtype</span></code></p></li>
+<li><p>It assumes that the stack at the program point where this
+annotation is placed satisfies <code class="docutils literal notranslate"><span class="pre">rtype</span></code>.</p></li>
+<li><p>Helmholtz assumes that a correct assumption is given.  It is
+user’s responsibility to make sure that the assumption is correct.
+If a wrong assumption is given, the verification result may not be
+reliable.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LoopInv</span> <span class="pre">rtype</span></code></p></li>
+<li><p>This annotation declares a loop invariant.  It is placed just
+before <code class="docutils literal notranslate"><span class="pre">LOOP</span></code> and <code class="docutils literal notranslate"><span class="pre">ITER</span></code> and specifies that the stack at the
+beginning of each iteration satisfies <code class="docutils literal notranslate"><span class="pre">rtype</span></code>.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">LoopInv</span></code> annotation must be placed just before <code class="docutils literal notranslate"><span class="pre">LOOP</span></code>, <code class="docutils literal notranslate"><span class="pre">ITER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAP</span></code>, <code class="docutils literal notranslate"><span class="pre">LOOP_LEFT</span></code> are not yet supported</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Measure</span></code></p></li>
+<li><p>This annotation defines a (recursive) function over a list, a set,
+or a map that can be used in annotations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Measure</span></code> annotations should be placed before <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="details">
+<h3>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Key</span></code>, <code class="docutils literal notranslate"><span class="pre">Address</span></code>, <code class="docutils literal notranslate"><span class="pre">Signature</span></code> are not defined as constructors.  This is because we don’t want to deconstruct the <code class="docutils literal notranslate"><span class="pre">key</span></code>, <code class="docutils literal notranslate"><span class="pre">address</span></code>, and <code class="docutils literal notranslate"><span class="pre">signature</span></code> values into a string or bytes.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">str</span></code> in <code class="docutils literal notranslate"><span class="pre">Timestamp</span> <span class="pre">str</span></code> accepts an RFC3339-compliant string.</p></li>
+<li><p>The current annotation language does not distinguish between <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">nat</span></code>, <code class="docutils literal notranslate"><span class="pre">mutez</span></code>, and <code class="docutils literal notranslate"><span class="pre">timestamp</span></code> at the type level.</p></li>
+<li><p>Operator precedence follows the convention of OCaml.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOOP_LEFT</span></code>, <code class="docutils literal notranslate"><span class="pre">APPLY</span></code>, (<code class="docutils literal notranslate"><span class="pre">LSL</span></code>, <code class="docutils literal notranslate"><span class="pre">LSR</span></code>, <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>, <code class="docutils literal notranslate"><span class="pre">XOR</span></code>, <code class="docutils literal notranslate"><span class="pre">NOT</span></code> as bit operations), <code class="docutils literal notranslate"><span class="pre">MAP</span></code>, (<code class="docutils literal notranslate"><span class="pre">SIZE</span></code> for map, set, and list), <code class="docutils literal notranslate"><span class="pre">CHAIN_ID</span></code>, and deprecated instructions are not yet supported.</p></li>
+<li><p>Some relations between constants are not inferred automatically. For examples, despite the fact that <code class="docutils literal notranslate"><span class="pre">sha256</span> <span class="pre">0x0</span> <span class="pre">=</span> <span class="pre">0x6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d</span></code> is true, Helmholtz will not verify this. If you need such properties, use <code class="docutils literal notranslate"><span class="pre">Assume</span></code>.</p></li>
+<li><p>When ITERate map or set, Helmholtz can not use the condition about the order of the iteration.</p></li>
+<li><p>Our source codes of Helmholtz is in <code class="docutils literal notranslate"><span class="pre">/home/opam/ReFX/src/proto_005_PsBabyM1/lib_refx</span></code> in the container.</p></li>
+</ul>
+</div>
+<div class="section" id="q-a">
+<h3>Q&amp;A<a class="headerlink" href="#q-a" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Error <code class="docutils literal notranslate"><span class="pre">misaligned</span> <span class="pre">expression</span></code> is output</p></li>
+<li><p>It is not an error output by Helmholtz, but an error by indent-check by Michelson <code class="docutils literal notranslate"><span class="pre">tezos-client</span> <span class="pre">typecheck</span></code>. For the rules of indentation, see <a class="reference external" href="https://tezos.gitlab.io/whitedoc/micheline.html">here</a>.</p></li>
+<li><p>Error <code class="docutils literal notranslate"><span class="pre">MenhirBasics.Error</span></code> is output</p></li>
+<li><p>This is an syntax error output by Helmholtz. Please check the annotations you give.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="boomerang">
+<h3>Boomerang<a class="headerlink" href="#boomerang" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">boomerang</span><span class="o">.</span><span class="n">tz</span>
+<span class="n">parameter</span> <span class="kt">unit</span><span class="o">;</span>
+<span class="n">storage</span> <span class="kt">unit</span><span class="o">;</span>
+<span class="o">&lt;&lt;</span> <span class="nc">ContractAnnot</span>
+   <span class="o">{</span> <span class="o">(_,</span> <span class="o">_)</span> <span class="o">|</span> <span class="nc">True</span> <span class="o">}</span> <span class="o">-&gt;</span>
+   <span class="o">{</span> <span class="o">(</span><span class="n">ops</span><span class="o">,</span> <span class="o">_)</span> <span class="o">|</span> <span class="n">amount</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">ops</span> <span class="o">=</span> <span class="bp">[]</span> <span class="o">||</span>
+      <span class="n">amount</span> <span class="o">&lt;&gt;</span> <span class="mi">0</span>  <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="k">match</span> <span class="n">contract_opt</span> <span class="n">source</span> <span class="k">with</span>
+                         <span class="o">|</span> <span class="nc">Some</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="n">ops</span> <span class="o">=</span> <span class="o">[</span> <span class="nc">TransferTokens</span> <span class="nc">Unit</span> <span class="n">amount</span> <span class="n">c</span> <span class="o">]</span>
+                         <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="nc">False</span><span class="o">)</span> <span class="o">}</span> <span class="o">&amp;</span>
+   <span class="o">{</span> <span class="o">_</span> <span class="o">|</span> <span class="nc">False</span> <span class="o">}</span> <span class="o">&gt;&gt;</span>
+<span class="n">code</span>
+  <span class="o">{</span>
+    <span class="nc">CDR</span><span class="o">;</span>
+    <span class="nc">NIL</span> <span class="n">operation</span><span class="o">;</span>
+    <span class="nc">AMOUNT</span><span class="o">;</span>
+    <span class="nc">PUSH</span> <span class="n">mutez</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="nc">IFCMPEQ</span>
+      <span class="o">{</span>
+      <span class="o">}</span>
+      <span class="o">{</span>
+        <span class="nc">SOURCE</span><span class="o">;</span>
+        <span class="nc">CONTRACT</span> <span class="kt">unit</span><span class="o">;</span>
+        <span class="nc">ASSERT_SOME</span><span class="o">;</span>
+        <span class="nc">AMOUNT</span><span class="o">;</span>
+        <span class="nc">UNIT</span><span class="o">;</span>
+        <span class="nc">TRANSFER_TOKENS</span><span class="o">;</span>
+        <span class="nc">CONS</span><span class="o">;</span>
+      <span class="o">};</span>
+    <span class="nc">PAIR</span><span class="o">;</span>
+  <span class="o">}</span>
+</pre></div>
+</div>
+<p>The above code, which is the contents of <code class="docutils literal notranslate"><span class="pre">boomerang.tz</span></code> in the
+container, is a Michelson program that transfers money amount
+<code class="docutils literal notranslate"><span class="pre">balance</span></code> to an account <code class="docutils literal notranslate"><span class="pre">source</span></code>.  The program comes with an
+annotation surrounded by <code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>.  This annotation, which is
+labeled by a constructor <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code>, states the following two
+properties.</p>
+<ul class="simple">
+<li><p>The pair <code class="docutils literal notranslate"><span class="pre">(ops,</span> <span class="pre">_)</span></code>, which is in the stack at the end of the
+program, satisfies <code class="docutils literal notranslate"><span class="pre">ops</span> <span class="pre">=</span> <span class="pre">[TransferTokens</span> <span class="pre">Unit</span> <span class="pre">balance</span> <span class="pre">addr]</span></code>; this
+operation means that this contract will send money amount <code class="docutils literal notranslate"><span class="pre">balance</span></code>
+to <code class="docutils literal notranslate"><span class="pre">addr</span></code> with argument <code class="docutils literal notranslate"><span class="pre">Unit</span></code> after this contract finishes.</p></li>
+<li><p>No exceptions are raised from the instructions in this program; this
+is expressed by the part <code class="docutils literal notranslate"><span class="pre">...</span> <span class="pre">&amp;</span> <span class="pre">{</span> <span class="pre">exc</span> <span class="pre">|</span> <span class="pre">False</span> <span class="pre">}</span></code>.  There is an
+<code class="docutils literal notranslate"><span class="pre">ASSERT_SOME</span></code> instruction in the program that may raise an exception
+when the stack top is <code class="docutils literal notranslate"><span class="pre">None</span></code>, but since, from the specification of
+Michelson, the account pointed to by <code class="docutils literal notranslate"><span class="pre">source</span></code> should be a
+human-operated account, the <code class="docutils literal notranslate"><span class="pre">CONTRACT</span> <span class="pre">unit</span></code> should always return
+<code class="docutils literal notranslate"><span class="pre">Some</span></code>, so no exception will be raised.</p></li>
+</ul>
+<p>If you verify this program, you will get <code class="docutils literal notranslate"><span class="pre">VERIFIED</span></code>.</p>
+</div>
+<div class="section" id="checksig">
+<h3>Checksig<a class="headerlink" href="#checksig" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">checksig</span><span class="o">.</span><span class="n">tz</span>
+<span class="n">parameter</span> <span class="o">(</span><span class="n">pair</span> <span class="n">signature</span> <span class="kt">string</span><span class="o">);</span>
+<span class="n">storage</span> <span class="o">(</span><span class="n">pair</span> <span class="n">address</span> <span class="n">key</span><span class="o">);</span>
+<span class="o">&lt;&lt;</span> <span class="nc">ContractAnnot</span>
+  <span class="o">{</span> <span class="o">((</span><span class="n">sign</span><span class="o">,</span> <span class="n">data</span><span class="o">),</span> <span class="o">(</span><span class="n">addr</span><span class="o">,</span> <span class="n">pubkey</span><span class="o">))</span> <span class="o">|</span>
+     <span class="k">match</span> <span class="n">contract_opt</span> <span class="n">addr</span> <span class="k">with</span>
+     <span class="nc">Some</span> <span class="o">(</span><span class="nc">Contract</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span> <span class="o">_)</span> <span class="o">-&gt;</span> <span class="nc">True</span> <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="nc">False</span> <span class="o">}</span> <span class="o">-&gt;</span>
+  <span class="o">{</span> <span class="o">([</span><span class="n">op</span><span class="o">],</span> <span class="n">new_store</span><span class="o">)</span> <span class="o">|</span>
+     <span class="o">(</span><span class="n">addr</span><span class="o">,</span> <span class="n">pubkey</span><span class="o">)</span> <span class="o">=</span> <span class="n">new_store</span> <span class="o">&amp;&amp;</span>
+     <span class="k">sig</span> <span class="n">pubkey</span> <span class="n">sign</span> <span class="o">(</span><span class="n">pack</span> <span class="n">data</span><span class="o">)</span> <span class="o">&amp;&amp;</span>
+     <span class="k">match</span> <span class="n">contract_opt</span> <span class="n">addr</span> <span class="k">with</span>
+     <span class="o">|</span> <span class="nc">Some</span> <span class="n">c</span> <span class="o">-&gt;</span> <span class="n">op</span> <span class="o">=</span> <span class="nc">Transfer</span> <span class="n">data</span> <span class="mi">1</span> <span class="n">c</span>
+     <span class="o">|</span> <span class="nc">None</span> <span class="o">-&gt;</span> <span class="nc">False</span> <span class="o">}</span>
+  <span class="o">&amp;</span> <span class="o">{</span> <span class="o">_</span> <span class="o">|</span> <span class="n">not</span> <span class="o">(</span><span class="k">sig</span> <span class="n">pubkey</span> <span class="n">sign</span> <span class="o">(</span><span class="n">pack</span> <span class="n">data</span><span class="o">))</span> <span class="o">}</span> <span class="o">&gt;&gt;</span>
+<span class="n">code</span>
+  <span class="o">{</span>
+    <span class="nc">DUP</span><span class="o">;</span> <span class="nc">DUP</span><span class="o">;</span> <span class="nc">DUP</span><span class="o">;</span>
+    <span class="nc">DIP</span> <span class="o">{</span> <span class="nc">CAR</span><span class="o">;</span> <span class="nc">UNPAIR</span><span class="o">;</span> <span class="nc">DIP</span> <span class="o">{</span> <span class="nc">PACK</span> <span class="o">}</span> <span class="o">};</span> <span class="nc">CDDR</span><span class="o">;</span>
+    <span class="nc">CHECK_SIGNATURE</span><span class="o">;</span> <span class="nc">ASSERT</span><span class="o">;</span>
+
+    <span class="nc">UNPAIR</span><span class="o">;</span> <span class="nc">CDR</span><span class="o">;</span> <span class="nc">SWAP</span><span class="o">;</span> <span class="nc">CAR</span><span class="o">;</span>
+    <span class="nc">CONTRACT</span> <span class="kt">string</span><span class="o">;</span> <span class="nc">ASSERT_SOME</span><span class="o">;</span> <span class="nc">SWAP</span><span class="o">;</span>
+    <span class="nc">PUSH</span> <span class="n">mutez</span> <span class="mi">1</span><span class="o">;</span> <span class="nc">SWAP</span><span class="o">;</span>
+    <span class="nc">TRANSFER_TOKENS</span><span class="o">;</span>
+
+    <span class="nc">NIL</span> <span class="n">operation</span><span class="o">;</span> <span class="nc">SWAP</span><span class="o">;</span>
+    <span class="nc">CONS</span><span class="o">;</span> <span class="nc">DIP</span> <span class="o">{</span> <span class="nc">CDR</span> <span class="o">};</span>
+    <span class="nc">PAIR</span><span class="o">;</span>
+  <span class="o">}</span>
+</pre></div>
+</div>
+<p>This program checks the signature given by the parameter is valid and
+the contract that the address in storage points to has type <code class="docutils literal notranslate"><span class="pre">contract</span> <span class="pre">string</span></code>; this behavior is described in the post-condition part of
+<code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code>.  The exception part in <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code> expresses that
+the program can raise two kinds of exceptions: <code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">Unit</span></code> in
+<code class="docutils literal notranslate"><span class="pre">ASSERT</span></code> and <code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">0</span></code> in <code class="docutils literal notranslate"><span class="pre">FAILWITH</span></code>.</p>
+</div>
+<div class="section" id="sumseq">
+<h3>Sumseq<a class="headerlink" href="#sumseq" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">sumseq</span><span class="o">.</span><span class="n">tz</span>
+<span class="n">parameter</span> <span class="o">(</span><span class="kt">list</span> <span class="kt">int</span><span class="o">);</span>
+<span class="n">storage</span> <span class="kt">int</span><span class="o">;</span>
+<span class="o">&lt;&lt;</span> <span class="nc">Measure</span> <span class="n">sumseq</span> <span class="o">:</span> <span class="o">(</span><span class="kt">list</span> <span class="kt">int</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="kt">int</span> <span class="n">where</span> <span class="nc">Nil</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">|</span> <span class="nc">Cons</span> <span class="n">h</span> <span class="n">t</span> <span class="o">=</span> <span class="o">(</span><span class="n">h</span> <span class="o">+</span> <span class="o">(</span><span class="n">sumseq</span> <span class="n">t</span><span class="o">))</span> <span class="o">&gt;&gt;</span>
+<span class="o">&lt;&lt;</span> <span class="nc">ContractAnnot</span> <span class="o">{</span> <span class="n">arg</span> <span class="o">|</span> <span class="nc">True</span> <span class="o">}</span> <span class="o">-&gt;</span>
+  <span class="o">{</span> <span class="n">ret</span> <span class="o">|</span> <span class="n">sumseq</span> <span class="o">(</span><span class="n">first</span> <span class="n">arg</span><span class="o">)</span> <span class="o">=</span> <span class="n">second</span> <span class="n">ret</span> <span class="o">}</span> <span class="o">&amp;</span>
+  <span class="o">{</span> <span class="n">exc</span> <span class="o">|</span> <span class="nc">False</span> <span class="o">}</span> <span class="o">(</span><span class="n">l</span><span class="o">:</span><span class="kt">list</span> <span class="kt">int</span><span class="o">)</span> <span class="o">&gt;&gt;</span>
+<span class="n">code</span>
+  <span class="o">{</span>
+    <span class="nc">CAR</span><span class="o">;</span>
+    <span class="o">&lt;&lt;</span> <span class="nc">Assume</span> <span class="o">{</span> <span class="n">x</span> <span class="o">|</span> <span class="n">x</span> <span class="o">=</span> <span class="n">l</span> <span class="o">}</span> <span class="o">&gt;&gt;</span>
+    <span class="nc">DIP</span> <span class="o">{</span> <span class="nc">PUSH</span> <span class="kt">int</span> <span class="mi">0</span> <span class="o">};</span>
+    <span class="o">&lt;&lt;</span> <span class="nc">LoopInv</span> <span class="o">{</span> <span class="n">r</span><span class="o">:</span><span class="n">s</span> <span class="o">|</span> <span class="n">l</span> <span class="o">=</span> <span class="n">first</span> <span class="n">arg</span> <span class="o">&amp;&amp;</span> <span class="n">s</span> <span class="o">+</span> <span class="n">sumseq</span> <span class="n">r</span> <span class="o">=</span> <span class="n">sumseq</span> <span class="n">l</span> <span class="o">}</span> <span class="o">&gt;&gt;</span>
+    <span class="nc">ITER</span> <span class="o">{</span> <span class="nc">ADD</span> <span class="o">};</span>
+    <span class="nc">NIL</span> <span class="n">operation</span><span class="o">;</span>
+    <span class="nc">PAIR</span><span class="o">;</span>
+  <span class="o">}</span>
+</pre></div>
+</div>
+<p>This contract computes the sum of the integers in the list passed as a
+parameter.  The <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code> annotation uses the function <code class="docutils literal notranslate"><span class="pre">sumseq</span></code>,
+which is defined in the earlier <code class="docutils literal notranslate"><span class="pre">Measure</span></code> annotation.  In the <code class="docutils literal notranslate"><span class="pre">code</span></code>
+section, the <code class="docutils literal notranslate"><span class="pre">Assume</span></code> annotation is used to specify that <code class="docutils literal notranslate"><span class="pre">l</span></code>, which is
+declared to be a ghost variable in the <code class="docutils literal notranslate"><span class="pre">ContractAnnot</span></code>, is the list
+passed as a parameter.  <code class="docutils literal notranslate"><span class="pre">LoopInv</span></code> gives the loop-invariant for
+<code class="docutils literal notranslate"><span class="pre">ITER</span></code>. <code class="docutils literal notranslate"><span class="pre">ITER</span> <span class="pre">{</span> <span class="pre">ADD</span> <span class="pre">}</span></code> is an instruction that adds the head of the
+list to the second <code class="docutils literal notranslate"><span class="pre">s</span></code> from the top of the stack. The loop-invariant
+condition <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">+</span> <span class="pre">sumseq</span> <span class="pre">r</span> <span class="pre">=</span> <span class="pre">sumseq</span> <span class="pre">l</span></code> expresses that adding <code class="docutils literal notranslate"><span class="pre">s</span></code> to the
+sum of list <code class="docutils literal notranslate"><span class="pre">r</span></code> in process equals the sum of the list <code class="docutils literal notranslate"><span class="pre">l</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="support.html" class="btn btn-neutral float-right" title="Instruction support status" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Helmholtz’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, ReFX project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
