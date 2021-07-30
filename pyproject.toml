@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "helmholtz-doc"
+version = "0.1.0"
+description = "Helmholtz documentation"
+authors = ["Yuki Nishida <nishida@rsworks.jp>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Sphinx = "^4.0.3"
+sphinx-rtd-theme = "^0.5.2"
+myst-parser = "^0.15.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+sphinx-autobuild = "^2021.3.14"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
