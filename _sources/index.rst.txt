@@ -9,6 +9,7 @@ Welcome to Helmholtz's documentation!
 .. toctree::
 
    helmholtz
+   example
    support
    develop
    license
