@@ -348,11 +348,12 @@ EXP ::=
   | &quot;if&quot; EXP &quot;then&quot; EXP &quot;else&quot; EXP
   | EXP &quot;,&quot; EXP
   | EXP &quot;:&quot; SORT
+  | VAR &quot;:&gt;&quot; RTYPE &quot;-&gt;&quot; RTYPE &quot;&amp;&quot; RTYPE
   | &quot;[&quot; &quot;]&quot;
   | &quot;[&quot; EXP (&quot;;&quot; EXP)* &quot;]&quot;
-  | &quot;match&quot; EXP &quot;with&quot; PATTERNS (&quot;|&quot; PATTERNS)*
+  | &quot;match&quot; EXP &quot;with&quot; PATTERN-MATCHING
   | &quot;(&quot; EXP &quot;)&quot;
-PATTERNS ::= PATTERN &quot;-&gt;&quot; EXP
+PATTERN-MATCHING ::= (&quot;|&quot;)? PATTERN &quot;-&gt;&quot; EXP (&quot;|&quot; PATTERN &quot;-&gt;&quot; EXP)*
 OP ::= &quot;+&quot; | &quot;-&quot; | &quot;*&quot; | &quot;/&quot; | &quot;mod&quot; | &quot;&lt;&quot; | &quot;&gt;&quot; | &quot;&lt;=&quot; | &quot;&gt;=&quot; | &quot;=&quot; | &quot;&lt;&gt;&quot; | &quot;&amp;&amp;&quot; | &quot;||&quot; | &quot;::&quot; | &quot;^&quot;
 UOP ::= &quot;-&quot; | &quot;!&quot;
 ACCESSER ::= &quot;first&quot; | &quot;second&quot;
