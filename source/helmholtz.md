@@ -162,11 +162,12 @@ fact, a verification result becomes nonsensical.
       | "if" EXP "then" EXP "else" EXP
       | EXP "," EXP
       | EXP ":" SORT
+      | VAR ":>" RTYPE "->" RTYPE "&" RTYPE
       | "[" "]"
       | "[" EXP (";" EXP)* "]"
-      | "match" EXP "with" PATTERNS ("|" PATTERNS)*
+      | "match" EXP "with" PATTERN-MATCHING
       | "(" EXP ")"
-    PATTERNS ::= PATTERN "->" EXP
+    PATTERN-MATCHING ::= ("|")? PATTERN "->" EXP ("|" PATTERN "->" EXP)*
     OP ::= "+" | "-" | "*" | "/" | "mod" | "<" | ">" | "<=" | ">=" | "=" | "<>" | "&&" | "||" | "::" | "^"
     UOP ::= "-" | "!"
     ACCESSER ::= "first" | "second"
